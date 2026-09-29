@@ -1,0 +1,22 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Secrets and local state
+.env
+.netlify/
+.vercel
+.env*
+!.env.example
+
+# Internal pitch notes, kept local
+reviews/
+PITCH.md
+PITCH-SCRIPT.md

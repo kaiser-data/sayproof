@@ -1,0 +1,1282 @@
+[
+ {
+  "config": "A_current",
+  "claim": "Pluto is our ninth planet.",
+  "expected": "outdated",
+  "verdict": "outdated",
+  "guard": null,
+  "source": "https://en.wikipedia.org/wiki/Pluto",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/Pluto",
+   "http://www.infoplease.com/ipa/A0776605.html?mail-07-29=",
+   "http://www.infoplease.com/ipa/A0776605.html",
+   "https://www.infoplease.com/math-science/space/solar-system/the-flap-over-pluto",
+   "https://en.wikipedia.org/wiki/Planet_Nine"
+  ],
+  "scores": [
+   0.83742094,
+   0.8752871,
+   0.8752871,
+   0.86928266,
+   0.8524574
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "Pluto is our ninth planet.",
+  "expected": "outdated",
+  "verdict": "outdated",
+  "guard": null,
+  "source": "https://en.wikipedia.org/wiki/Pluto",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/Pluto",
+   "http://www.infoplease.com/ipa/A0776605.html?mail-07-29=",
+   "http://www.infoplease.com/ipa/A0776605.html",
+   "https://www.infoplease.com/math-science/space/solar-system/the-flap-over-pluto",
+   "https://en.wikipedia.org/wiki/Planet_Nine"
+  ],
+  "scores": [
+   0.83742094,
+   0.8752871,
+   0.8752871,
+   0.86928266,
+   0.8524574
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "You can see the Great Wall of China from space with the naked eye.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.skyatnightmagazine.com/space-science/can-you-see-great-wall-china-from-space",
+  "n_results": 5,
+  "result_urls": [
+   "http://www.china.org.cn/english/scitech/95406.htm",
+   "https://www.reddit.com/r/todayilearned/comments/1kg3uwe/til_the_great_wall_of_china_is_not_actually",
+   "https://www.skyatnightmagazine.com/space-science/can-you-see-great-wall-china-from-space",
+   "https://www.chinadiscovery.com/great-wall/facts/can-you-see-the-great-wall-from-space.html",
+   "https://archaeology-travel.com/asia/china/great-wall-of-china"
+  ],
+  "scores": [
+   0.94263905,
+   0.9240941,
+   0.91399205,
+   0.9037116,
+   0.8858788
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "You can see the Great Wall of China from space with the naked eye.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.skyatnightmagazine.com/space-science/can-you-see-great-wall-china-from-space",
+  "n_results": 5,
+  "result_urls": [
+   "http://www.china.org.cn/english/scitech/95406.htm",
+   "https://www.reddit.com/r/todayilearned/comments/1kg3uwe/til_the_great_wall_of_china_is_not_actually",
+   "https://www.skyatnightmagazine.com/space-science/can-you-see-great-wall-china-from-space",
+   "https://www.chinadiscovery.com/great-wall/facts/can-you-see-the-great-wall-from-space.html",
+   "https://archaeology-travel.com/asia/china/great-wall-of-china"
+  ],
+  "scores": [
+   0.94263905,
+   0.9240941,
+   0.91399205,
+   0.9037116,
+   0.8858788
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "The Eiffel Tower grows by about 15 centimetres in summer.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://www.linkedin.com/posts/national-commission-on-research-science-and-technology_ncrst-sciencefact-physics-activity-7369638999784677377-9A2V",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.linkedin.com/posts/national-commission-on-research-science-and-technology_ncrst-sciencefact-physics-activity-7369638999784677377-9A2V",
+   "https://theconversation.com/the-eiffel-tower-gets-bigger-every-summer-heres-why-261904",
+   "https://www.lodomap.com/pins/the-eiffel-tower-grows-in-summer",
+   "https://www.scribd.com/document/854704093/6",
+   "https://www.linkedin.com/posts/interestingengineering_the-eiffel-tower-grows-1215-cm-taller-each-activity-7359923930377220097-AyMR"
+  ],
+  "scores": [
+   0.94251215,
+   0.92604345,
+   0.92392945,
+   0.9071234,
+   0.9041187
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "The Eiffel Tower grows by about 15 centimetres in summer.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://theconversation.com/the-eiffel-tower-gets-bigger-every-summer-heres-why-261904",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.linkedin.com/posts/national-commission-on-research-science-and-technology_ncrst-sciencefact-physics-activity-7369638999784677377-9A2V",
+   "https://theconversation.com/the-eiffel-tower-gets-bigger-every-summer-heres-why-261904",
+   "https://www.lodomap.com/pins/the-eiffel-tower-grows-in-summer",
+   "https://www.scribd.com/document/854704093/6",
+   "https://www.linkedin.com/posts/interestingengineering_the-eiffel-tower-grows-1215-cm-taller-each-activity-7359923930377220097-AyMR"
+  ],
+  "scores": [
+   0.94251215,
+   0.92604345,
+   0.92392945,
+   0.9071234,
+   0.9041187
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "The Berlin Wall fell in 1991.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.cbsnews.com/news/berlin-wall-germany-anniversary-35-years-history",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.archives.gov/news/topics/berlin-wall-anniversary",
+   "https://courses.lumenlearning.com/suny-hccc-worldhistory2/chapter/fall-of-the-berlin-wall",
+   "https://en.wikipedia.org/wiki/Fall_of_the_Berlin_Wall",
+   "https://www.cbsnews.com/news/berlin-wall-germany-anniversary-35-years-history",
+   "https://www.worldhistory.org.uk/cold-war-fall-of-the-berlin-wall"
+  ],
+  "scores": [
+   0.77261686,
+   0.769306,
+   0.740494,
+   0.73981786,
+   0.72814995
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "The Berlin Wall fell in 1991.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.cbsnews.com/news/berlin-wall-germany-anniversary-35-years-history",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.archives.gov/news/topics/berlin-wall-anniversary",
+   "https://courses.lumenlearning.com/suny-hccc-worldhistory2/chapter/fall-of-the-berlin-wall",
+   "https://en.wikipedia.org/wiki/Fall_of_the_Berlin_Wall",
+   "https://www.cbsnews.com/news/berlin-wall-germany-anniversary-35-years-history",
+   "https://www.worldhistory.org.uk/cold-war-fall-of-the-berlin-wall"
+  ],
+  "scores": [
+   0.77261686,
+   0.769306,
+   0.740494,
+   0.73981786,
+   0.72814995
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "Mount Everest is the highest mountain on Earth at 8,849 metres.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://www.britannica.com/place/Mount-Everest",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/Mount_Everest",
+   "https://en.wikipedia.org/wiki/List_of_highest_mountains_on_Earth",
+   "https://www.britannica.com/place/Mount-Everest",
+   "https://ommcomnews.com/india-news/dubai-based-indian-banker-shradha-gupta-conquers-mount-everest-the-worlds-highest-peak",
+   "http://followalice.com/adventure-trips/everest-base-camp/posts/7-mount-everest-facts-that-will-surprise-you"
+  ],
+  "scores": [
+   0.9245858,
+   0.9055316,
+   0.89121616,
+   0.9412289,
+   0.9240941
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "Mount Everest is the highest mountain on Earth at 8,849 metres.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://www.britannica.com/place/Mount-Everest",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/Mount_Everest",
+   "https://en.wikipedia.org/wiki/List_of_highest_mountains_on_Earth",
+   "https://www.britannica.com/place/Mount-Everest",
+   "https://ommcomnews.com/india-news/dubai-based-indian-banker-shradha-gupta-conquers-mount-everest-the-worlds-highest-peak",
+   "http://followalice.com/adventure-trips/everest-base-camp/posts/7-mount-everest-facts-that-will-surprise-you"
+  ],
+  "scores": [
+   0.9245858,
+   0.9055316,
+   0.89121616,
+   0.9412289,
+   0.9240941
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "Humans only use 10 percent of their brains.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.britannica.com/story/do-we-really-use-only-10-percent-of-our-brain",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.britannica.com/story/do-we-really-use-only-10-percent-of-our-brain",
+   "https://www.psychologytoday.com/us/blog/common-sense-science/202505/beyond-the-myth-that-we-use-only-10-percent-of-our-brains",
+   "https://mcgovern.mit.edu/2024/01/26/do-we-use-only-10-percent-of-our-brain",
+   "https://www.medicalnewstoday.com/articles/321060",
+   "https://uamshealth.com/medical-myths/do-people-only-use-10-percent-of-our-brains"
+  ],
+  "scores": [
+   0.9416167,
+   0.93624437,
+   0.9210814,
+   0.9121316,
+   0.90330297
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "Humans only use 10 percent of their brains.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.britannica.com/story/do-we-really-use-only-10-percent-of-our-brain",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.britannica.com/story/do-we-really-use-only-10-percent-of-our-brain",
+   "https://www.psychologytoday.com/us/blog/common-sense-science/202505/beyond-the-myth-that-we-use-only-10-percent-of-our-brains",
+   "https://mcgovern.mit.edu/2024/01/26/do-we-use-only-10-percent-of-our-brain",
+   "https://www.medicalnewstoday.com/articles/321060",
+   "https://uamshealth.com/medical-myths/do-people-only-use-10-percent-of-our-brains"
+  ],
+  "scores": [
+   0.9416167,
+   0.93624437,
+   0.9210814,
+   0.9121316,
+   0.90330297
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "Goldfish have a memory span of only three seconds.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.discovermagazine.com/goldfish-may-have-longer-memories-than-just-three-seconds-46062",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.discovermagazine.com/goldfish-may-have-longer-memories-than-just-three-seconds-46062",
+   "https://brainly.in/question/45456089",
+   "https://www.westeamahead.org/blog/2025/8/7/mythbuster-goldfish-have-a-3-second-memory",
+   "https://www.discoverwildlife.com/animal-facts/fish/goldfish-memory",
+   "https://www.theguardian.com/science/article/2024/jul/31/memory-like-a-goldfish-why-this-could-be-a-good-thing"
+  ],
+  "scores": [
+   0.9197076,
+   0.91435975,
+   0.9039154,
+   0.90039873,
+   0.8891543
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "Goldfish have a memory span of only three seconds.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.discovermagazine.com/goldfish-may-have-longer-memories-than-just-three-seconds-46062",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.discovermagazine.com/goldfish-may-have-longer-memories-than-just-three-seconds-46062",
+   "https://brainly.in/question/45456089",
+   "https://www.westeamahead.org/blog/2025/8/7/mythbuster-goldfish-have-a-3-second-memory",
+   "https://www.discoverwildlife.com/animal-facts/fish/goldfish-memory",
+   "https://www.theguardian.com/science/article/2024/jul/31/memory-like-a-goldfish-why-this-could-be-a-good-thing"
+  ],
+  "scores": [
+   0.9197076,
+   0.91435975,
+   0.9039154,
+   0.90039873,
+   0.8891543
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "Die Berliner Mauer fiel im November 1989.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://de.wikipedia.org/wiki/Berliner_Mauer",
+  "n_results": 5,
+  "result_urls": [
+   "https://de.wikipedia.org/wiki/Berliner_Mauer",
+   "https://en.wikipedia.org/wiki/Fall_of_the_Berlin_Wall",
+   "https://www.hanisauland.de/wissen/kalender-allgemein/kalender/fall-der-berliner-mauer",
+   "https://www.berlin.museum/story/mauerfall-fotografien-bernd-horst-sefzik",
+   "https://www.stiftung-berliner-mauer.de/de/themen/die-berliner-mauer"
+  ],
+  "scores": [
+   0.92620385,
+   0.8965509,
+   0.89324445,
+   0.87113565,
+   0.8679453
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "Die Berliner Mauer fiel im November 1989.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://de.wikipedia.org/wiki/Berliner_Mauer",
+  "n_results": 5,
+  "result_urls": [
+   "https://de.wikipedia.org/wiki/Berliner_Mauer",
+   "https://en.wikipedia.org/wiki/Fall_of_the_Berlin_Wall",
+   "https://www.hanisauland.de/wissen/kalender-allgemein/kalender/fall-der-berliner-mauer",
+   "https://www.berlin.museum/story/mauerfall-fotografien-bernd-horst-sefzik",
+   "https://www.stiftung-berliner-mauer.de/de/themen/die-berliner-mauer"
+  ],
+  "scores": [
+   0.92620385,
+   0.8965509,
+   0.89324445,
+   0.87113565,
+   0.8679453
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "Lightning never strikes the same place twice.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.britannica.com/story/can-lightning-strike-the-same-place-twice",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.britannica.com/story/can-lightning-strike-the-same-place-twice",
+   "https://www.westeamahead.org/blog/2025/2/5/mythbuster-lightning-never-strikes-the-same-place-twice",
+   "https://learningenglish.voanews.com/a/lightning-never-strikes-the-same-place-twice-or-does-it-/5495172.html",
+   "https://lpsfr.com/en/blog-lightning-never-strikes-twice",
+   "https://www.iii.org/article/lightning-safety-10-myths-and-the-facts"
+  ],
+  "scores": [
+   0.9301101,
+   0.9159971,
+   0.9132521,
+   0.902481,
+   0.89997756
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "Lightning never strikes the same place twice.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.britannica.com/story/can-lightning-strike-the-same-place-twice",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.britannica.com/story/can-lightning-strike-the-same-place-twice",
+   "https://www.westeamahead.org/blog/2025/2/5/mythbuster-lightning-never-strikes-the-same-place-twice",
+   "https://learningenglish.voanews.com/a/lightning-never-strikes-the-same-place-twice-or-does-it-/5495172.html",
+   "https://lpsfr.com/en/blog-lightning-never-strikes-twice",
+   "https://www.iii.org/article/lightning-safety-10-myths-and-the-facts"
+  ],
+  "scores": [
+   0.9301101,
+   0.9159971,
+   0.9132521,
+   0.902481,
+   0.89997756
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "Water boils at 100 degrees Celsius at sea level.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://brainly.in/question/44407348",
+  "n_results": 5,
+  "result_urls": [
+   "https://brainly.in/question/44407348",
+   "https://www.ebsco.com/research-starters/science/boiling-points",
+   "https://en.wikipedia.org/wiki/Boiling_point",
+   "https://www.reddit.com/r/askscience/comments/125nly5/since_water_boils_at_lower_temperatures_at_high",
+   "https://www.lpi.usra.edu/education/explore/ice/background/allAboutWater"
+  ],
+  "scores": [
+   0.9368016,
+   0.9356824,
+   0.918838,
+   0.9020676,
+   0.8810534
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "Water boils at 100 degrees Celsius at sea level.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://www.ebsco.com/research-starters/science/boiling-points",
+  "n_results": 5,
+  "result_urls": [
+   "https://brainly.in/question/44407348",
+   "https://www.ebsco.com/research-starters/science/boiling-points",
+   "https://en.wikipedia.org/wiki/Boiling_point",
+   "https://www.reddit.com/r/askscience/comments/125nly5/since_water_boils_at_lower_temperatures_at_high",
+   "https://www.lpi.usra.edu/education/explore/ice/background/allAboutWater"
+  ],
+  "scores": [
+   0.9368016,
+   0.9356824,
+   0.918838,
+   0.9020676,
+   0.8810534
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "Pluto is our ninth planet.",
+  "expected": "outdated",
+  "verdict": "outdated",
+  "guard": null,
+  "source": "https://science.nasa.gov/dwarf-planets/pluto/facts",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/Pluto",
+   "https://science.nasa.gov/dwarf-planets",
+   "https://en.wikipedia.org/wiki/Planet_Nine",
+   "https://science.nasa.gov/dwarf-planets/pluto/facts",
+   "https://science.nasa.gov/dwarf-planets/pluto"
+  ],
+  "scores": [
+   0.83742094,
+   0.85825616,
+   0.8524574,
+   0.84858394,
+   0.8396422
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "Pluto is our ninth planet.",
+  "expected": "outdated",
+  "verdict": "outdated",
+  "guard": null,
+  "source": "https://science.nasa.gov/dwarf-planets/pluto/facts",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/Pluto",
+   "https://science.nasa.gov/dwarf-planets",
+   "https://en.wikipedia.org/wiki/Planet_Nine",
+   "https://science.nasa.gov/dwarf-planets/pluto/facts",
+   "https://science.nasa.gov/dwarf-planets/pluto"
+  ],
+  "scores": [
+   0.83742094,
+   0.85825616,
+   0.8524574,
+   0.84858394,
+   0.8396422
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "You can see the Great Wall of China from space with the naked eye.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.esa.int/ESA_Multimedia/Images/2018/06/Great_Wall_of_China",
+  "n_results": 5,
+  "result_urls": [
+   "http://news.bbc.co.uk/2/hi/asia-pacific/4459311.stm",
+   "https://en.wikipedia.org/wiki/Great_Wall_of_China",
+   "https://www.esa.int/ESA_Multimedia/Images/2018/06/Great_Wall_of_China",
+   "https://www.britannica.com/question/Can-you-see-the-Great-Wall-of-China-from-space",
+   "https://en.wikipedia.org/wiki/Artificial_structures_visible_from_space"
+  ],
+  "scores": [
+   0.93161833,
+   0.9252368,
+   0.86136365,
+   0.84246206,
+   0.8338803
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "You can see the Great Wall of China from space with the naked eye.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.britannica.com/question/Can-you-see-the-Great-Wall-of-China-from-space",
+  "n_results": 5,
+  "result_urls": [
+   "http://news.bbc.co.uk/2/hi/asia-pacific/4459311.stm",
+   "https://en.wikipedia.org/wiki/Great_Wall_of_China",
+   "https://www.esa.int/ESA_Multimedia/Images/2018/06/Great_Wall_of_China",
+   "https://www.britannica.com/question/Can-you-see-the-Great-Wall-of-China-from-space",
+   "https://en.wikipedia.org/wiki/Artificial_structures_visible_from_space"
+  ],
+  "scores": [
+   0.93161833,
+   0.9252368,
+   0.86136365,
+   0.84246206,
+   0.8338803
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "The Eiffel Tower grows by about 15 centimetres in summer.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://www.dw.com/en/travel-eiffel-tower-vatican-hamburg-fun-facts/g-54904054",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.dw.com/en/travel-eiffel-tower-vatican-hamburg-fun-facts/g-54904054",
+   "https://www.toureiffel.paris/en/news/history-and-culture/why-does-eiffel-tower-change-size",
+   "https://en.wikipedia.org/wiki/Eiffel_Tower",
+   "https://en.wikipedia.org/wiki/Paris",
+   "https://www.smithsonianmag.com/smart-news/too-hot-for-art-some-paris-museums-and-landmarks-close-or-reduce-hours-amid-a-record-heat-wave-in-europe-180989029"
+  ],
+  "scores": [
+   0.8706085,
+   0.755078,
+   0.4199102,
+   0.2665361,
+   0.1406077
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "The Eiffel Tower grows by about 15 centimetres in summer.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://www.dw.com/en/travel-eiffel-tower-vatican-hamburg-fun-facts/g-54904054",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.dw.com/en/travel-eiffel-tower-vatican-hamburg-fun-facts/g-54904054",
+   "https://www.toureiffel.paris/en/news/history-and-culture/why-does-eiffel-tower-change-size",
+   "https://en.wikipedia.org/wiki/Eiffel_Tower",
+   "https://en.wikipedia.org/wiki/Paris",
+   "https://www.smithsonianmag.com/smart-news/too-hot-for-art-some-paris-museums-and-landmarks-close-or-reduce-hours-amid-a-record-heat-wave-in-europe-180989029"
+  ],
+  "scores": [
+   0.8706085,
+   0.755078,
+   0.4199102,
+   0.2665361,
+   0.1406077
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "The Berlin Wall fell in 1991.",
+  "expected": "contradicted",
+  "verdict": "unverified",
+  "guard": null,
+  "source": null,
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/Fall_of_the_Berlin_Wall",
+   "https://en.wikipedia.org/wiki/Berlin_Wall",
+   "https://www.dw.com/en/the-day-the-berlin-wall-came-down/a-51099267",
+   "https://americanhistory.si.edu/subs/history/timeline/end",
+   "https://en.wikipedia.org/wiki/German_reunification"
+  ],
+  "scores": [
+   0.740494,
+   0.6607204,
+   0.6501347,
+   0.6108487,
+   0.6016175
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "The Berlin Wall fell in 1991.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.dw.com/en/the-day-the-berlin-wall-came-down/a-51099267",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/Fall_of_the_Berlin_Wall",
+   "https://en.wikipedia.org/wiki/Berlin_Wall",
+   "https://www.dw.com/en/the-day-the-berlin-wall-came-down/a-51099267",
+   "https://americanhistory.si.edu/subs/history/timeline/end",
+   "https://en.wikipedia.org/wiki/German_reunification"
+  ],
+  "scores": [
+   0.740494,
+   0.6607204,
+   0.6501347,
+   0.6108487,
+   0.6016175
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "Mount Everest is the highest mountain on Earth at 8,849 metres.",
+  "expected": "supported",
+  "verdict": "unverified",
+  "guard": null,
+  "source": null,
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/Mount_Everest",
+   "https://en.wikipedia.org/wiki/List_of_highest_mountains_on_Earth",
+   "https://www.britannica.com/place/Mount-Everest",
+   "https://www.britannica.com/place/Mount-Everest/The-height-of-Everest",
+   "https://kids.britannica.com/students/article/Mount-Everest/274233"
+  ],
+  "scores": [
+   0.9245858,
+   0.9055316,
+   0.89121616,
+   0.7040996,
+   0.8808076
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "Mount Everest is the highest mountain on Earth at 8,849 metres.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://kids.britannica.com/students/article/Mount-Everest/274233",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/Mount_Everest",
+   "https://en.wikipedia.org/wiki/List_of_highest_mountains_on_Earth",
+   "https://www.britannica.com/place/Mount-Everest",
+   "https://www.britannica.com/place/Mount-Everest/The-height-of-Everest",
+   "https://kids.britannica.com/students/article/Mount-Everest/274233"
+  ],
+  "scores": [
+   0.9245858,
+   0.9055316,
+   0.89121616,
+   0.7040996,
+   0.8808076
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "Humans only use 10 percent of their brains.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.britannica.com/story/do-we-really-use-only-10-percent-of-our-brain",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.britannica.com/story/do-we-really-use-only-10-percent-of-our-brain",
+   "https://www.scientificamerican.com/article/do-people-only-use-10-percent-of-their-brains",
+   "https://www.scientificamerican.com/article/5-common-myths-about-the-brain",
+   "https://www.nature.com/scitable/blog/mind-read/lucy_is_wrong_we_use",
+   "https://www.smithsonianmag.com/science-nature/top-ten-myths-about-the-brain-178357288"
+  ],
+  "scores": [
+   0.9416167,
+   0.9296516,
+   0.914176,
+   0.90289277,
+   0.8952393
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "Humans only use 10 percent of their brains.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.britannica.com/story/do-we-really-use-only-10-percent-of-our-brain",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.britannica.com/story/do-we-really-use-only-10-percent-of-our-brain",
+   "https://www.scientificamerican.com/article/do-people-only-use-10-percent-of-their-brains",
+   "https://www.scientificamerican.com/article/5-common-myths-about-the-brain",
+   "https://www.nature.com/scitable/blog/mind-read/lucy_is_wrong_we_use",
+   "https://www.smithsonianmag.com/science-nature/top-ten-myths-about-the-brain-178357288"
+  ],
+  "scores": [
+   0.9416167,
+   0.9296516,
+   0.914176,
+   0.90289277,
+   0.8952393
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "Goldfish have a memory span of only three seconds.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.dw.com/en/the-forgotten-fish-a-new-look-at-our-underwater-friends/a-40224207",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.dw.com/en/the-forgotten-fish-a-new-look-at-our-underwater-friends/a-40224207",
+   "https://www.bbc.co.uk/programmes/articles/2hQLzX4xB9nryvlYRV339xy/are-fish-memories-really-as-bad-as-we-think-they-are",
+   "https://www.bbc.com/news/health-38896790",
+   "https://www.nationalgeographic.com/animals/article/150225-dogs-memories-animals-chimpanzees-science-mind-psychology",
+   "https://www.bbc.com/news/uk-england-oxfordshire-63242200"
+  ],
+  "scores": [
+   0.83549726,
+   0.8296166,
+   0.6907474,
+   0.4485476,
+   0.43972388
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "Goldfish have a memory span of only three seconds.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.dw.com/en/the-forgotten-fish-a-new-look-at-our-underwater-friends/a-40224207",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.dw.com/en/the-forgotten-fish-a-new-look-at-our-underwater-friends/a-40224207",
+   "https://www.bbc.co.uk/programmes/articles/2hQLzX4xB9nryvlYRV339xy/are-fish-memories-really-as-bad-as-we-think-they-are",
+   "https://www.bbc.com/news/health-38896790",
+   "https://www.nationalgeographic.com/animals/article/150225-dogs-memories-animals-chimpanzees-science-mind-psychology",
+   "https://www.bbc.com/news/uk-england-oxfordshire-63242200"
+  ],
+  "scores": [
+   0.83549726,
+   0.8296166,
+   0.6907474,
+   0.4485476,
+   0.43972388
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "Die Berliner Mauer fiel im November 1989.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://www.dw.com/downloads/26210916/07-der-mauerfall-ein-irrtum.pdf",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.dw.com/downloads/26210916/07-der-mauerfall-ein-irrtum.pdf",
+   "https://www.planet-wissen.de/geschichte/deutsche_geschichte/die_berliner_mauer/index.html",
+   "https://www.dw.com/de/berliner-mauer-9-november-1989-stuecke-welt-mauersteine-mauerstuecke-mauerreste/a-74556033",
+   "https://www.berlin.de/tourismus/fotos/sehenswuerdigkeiten-fotos/3667388-1355138.gallery.html?page=2",
+   "https://www.stiftung-berliner-mauer.de/de/themen/flucht-und-teilung"
+  ],
+  "scores": [
+   0.90018827,
+   0.8446273,
+   0.8437023,
+   0.829285,
+   0.79080546
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "Die Berliner Mauer fiel im November 1989.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://www.dw.com/downloads/26210916/07-der-mauerfall-ein-irrtum.pdf",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.dw.com/downloads/26210916/07-der-mauerfall-ein-irrtum.pdf",
+   "https://www.planet-wissen.de/geschichte/deutsche_geschichte/die_berliner_mauer/index.html",
+   "https://www.dw.com/de/berliner-mauer-9-november-1989-stuecke-welt-mauersteine-mauerstuecke-mauerreste/a-74556033",
+   "https://www.berlin.de/tourismus/fotos/sehenswuerdigkeiten-fotos/3667388-1355138.gallery.html?page=2",
+   "https://www.stiftung-berliner-mauer.de/de/themen/flucht-und-teilung"
+  ],
+  "scores": [
+   0.90018827,
+   0.8446273,
+   0.8437023,
+   0.829285,
+   0.79080546
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "Lightning never strikes the same place twice.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.noaa.gov/stories/5-striking-facts-versus-myths-about-lightning-you-should-know",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.britannica.com/story/can-lightning-strike-the-same-place-twice",
+   "https://www.britannica.com/question/Can-lightning-strike-the-same-place-twice",
+   "https://en.wikipedia.org/wiki/Lightning",
+   "https://svs.gsfc.nasa.gov/30872",
+   "https://www.noaa.gov/stories/5-striking-facts-versus-myths-about-lightning-you-should-know"
+  ],
+  "scores": [
+   0.9301101,
+   0.910998,
+   0.89997756,
+   0.89501935,
+   0.8765607
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "Lightning never strikes the same place twice.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.britannica.com/story/can-lightning-strike-the-same-place-twice",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.britannica.com/story/can-lightning-strike-the-same-place-twice",
+   "https://www.britannica.com/question/Can-lightning-strike-the-same-place-twice",
+   "https://en.wikipedia.org/wiki/Lightning",
+   "https://svs.gsfc.nasa.gov/30872",
+   "https://www.noaa.gov/stories/5-striking-facts-versus-myths-about-lightning-you-should-know"
+  ],
+  "scores": [
+   0.9301101,
+   0.910998,
+   0.89997756,
+   0.89501935,
+   0.8765607
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "Water boils at 100 degrees Celsius at sea level.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://en.wikipedia.org/wiki/Boiling_point",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/Boiling_point",
+   "https://en.wikipedia.org/wiki/Boiling",
+   "http://www.britannica.com/science/boiling-phase-change",
+   "https://www.britannica.com/science/boiling-phase-change",
+   "https://en.wikipedia.org/wiki/High-altitude_cooking"
+  ],
+  "scores": [
+   0.918838,
+   0.9106172,
+   0.90771407,
+   0.89279664,
+   0.86928266
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "Water boils at 100 degrees Celsius at sea level.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://en.wikipedia.org/wiki/Boiling_point",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/Boiling_point",
+   "https://en.wikipedia.org/wiki/Boiling",
+   "http://www.britannica.com/science/boiling-phase-change",
+   "https://www.britannica.com/science/boiling-phase-change",
+   "https://en.wikipedia.org/wiki/High-altitude_cooking"
+  ],
+  "scores": [
+   0.918838,
+   0.9106172,
+   0.90771407,
+   0.89279664,
+   0.86928266
+  ]
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "Pluto is our ninth planet.",
+  "expected": "outdated",
+  "verdict": "outdated",
+  "guard": null,
+  "source": "https://en.wikipedia.org/wiki/Pluto",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/Pluto",
+   "https://science.nasa.gov/dwarf-planets",
+   "https://en.wikipedia.org/wiki/Planet_Nine",
+   "https://science.nasa.gov/dwarf-planets/pluto/facts",
+   "https://science.nasa.gov/dwarf-planets/pluto"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "Pluto is our ninth planet.",
+  "expected": "outdated",
+  "verdict": "outdated",
+  "guard": null,
+  "source": "https://science.nasa.gov/dwarf-planets/pluto/facts",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/Pluto",
+   "https://science.nasa.gov/dwarf-planets",
+   "https://en.wikipedia.org/wiki/Planet_Nine",
+   "https://science.nasa.gov/dwarf-planets/pluto/facts",
+   "https://science.nasa.gov/dwarf-planets/pluto"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "You can see the Great Wall of China from space with the naked eye.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.britannica.com/question/Can-you-see-the-Great-Wall-of-China-from-space",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "http://news.bbc.co.uk/2/hi/asia-pacific/4459311.stm",
+   "https://en.wikipedia.org/wiki/Great_Wall_of_China",
+   "https://www.esa.int/ESA_Multimedia/Images/2018/06/Great_Wall_of_China",
+   "https://www.britannica.com/question/Can-you-see-the-Great-Wall-of-China-from-space",
+   "https://en.wikipedia.org/wiki/Artificial_structures_visible_from_space"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "You can see the Great Wall of China from space with the naked eye.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.britannica.com/question/Can-you-see-the-Great-Wall-of-China-from-space",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "http://news.bbc.co.uk/2/hi/asia-pacific/4459311.stm",
+   "https://en.wikipedia.org/wiki/Great_Wall_of_China",
+   "https://www.esa.int/ESA_Multimedia/Images/2018/06/Great_Wall_of_China",
+   "https://www.britannica.com/question/Can-you-see-the-Great-Wall-of-China-from-space",
+   "https://en.wikipedia.org/wiki/Artificial_structures_visible_from_space"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "The Eiffel Tower grows by about 15 centimetres in summer.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://www.dw.com/en/travel-eiffel-tower-vatican-hamburg-fun-facts/g-54904054",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.dw.com/en/travel-eiffel-tower-vatican-hamburg-fun-facts/g-54904054",
+   "https://www.toureiffel.paris/en/news/history-and-culture/why-does-eiffel-tower-change-size",
+   "https://en.wikipedia.org/wiki/Eiffel_Tower",
+   "https://en.wikipedia.org/wiki/Paris",
+   "https://www.smithsonianmag.com/smart-news/too-hot-for-art-some-paris-museums-and-landmarks-close-or-reduce-hours-amid-a-record-heat-wave-in-europe-180989029"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "The Eiffel Tower grows by about 15 centimetres in summer.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://www.dw.com/en/travel-eiffel-tower-vatican-hamburg-fun-facts/g-54904054",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.dw.com/en/travel-eiffel-tower-vatican-hamburg-fun-facts/g-54904054",
+   "https://www.toureiffel.paris/en/news/history-and-culture/why-does-eiffel-tower-change-size",
+   "https://en.wikipedia.org/wiki/Eiffel_Tower",
+   "https://en.wikipedia.org/wiki/Paris",
+   "https://www.smithsonianmag.com/smart-news/too-hot-for-art-some-paris-museums-and-landmarks-close-or-reduce-hours-amid-a-record-heat-wave-in-europe-180989029"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "The Berlin Wall fell in 1991.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.dw.com/en/the-day-the-berlin-wall-came-down/a-51099267",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/Fall_of_the_Berlin_Wall",
+   "https://en.wikipedia.org/wiki/Berlin_Wall",
+   "https://www.dw.com/en/the-day-the-berlin-wall-came-down/a-51099267",
+   "https://americanhistory.si.edu/subs/history/timeline/end",
+   "https://en.wikipedia.org/wiki/German_reunification"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "The Berlin Wall fell in 1991.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.dw.com/en/the-day-the-berlin-wall-came-down/a-51099267",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/Fall_of_the_Berlin_Wall",
+   "https://en.wikipedia.org/wiki/Berlin_Wall",
+   "https://www.dw.com/en/the-day-the-berlin-wall-came-down/a-51099267",
+   "https://americanhistory.si.edu/subs/history/timeline/end",
+   "https://en.wikipedia.org/wiki/German_reunification"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "Mount Everest is the highest mountain on Earth at 8,849 metres.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://www.britannica.com/place/Mount-Everest",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/Mount_Everest",
+   "https://en.wikipedia.org/wiki/List_of_highest_mountains_on_Earth",
+   "https://www.britannica.com/place/Mount-Everest",
+   "https://www.britannica.com/place/Mount-Everest/The-height-of-Everest",
+   "https://kids.britannica.com/students/article/Mount-Everest/274233"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "Mount Everest is the highest mountain on Earth at 8,849 metres.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://www.britannica.com/place/Mount-Everest",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/Mount_Everest",
+   "https://en.wikipedia.org/wiki/List_of_highest_mountains_on_Earth",
+   "https://www.britannica.com/place/Mount-Everest",
+   "https://www.britannica.com/place/Mount-Everest/The-height-of-Everest",
+   "https://kids.britannica.com/students/article/Mount-Everest/274233"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "Humans only use 10 percent of their brains.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.britannica.com/story/do-we-really-use-only-10-percent-of-our-brain",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.britannica.com/story/do-we-really-use-only-10-percent-of-our-brain",
+   "https://www.scientificamerican.com/article/do-people-only-use-10-percent-of-their-brains",
+   "https://www.scientificamerican.com/article/5-common-myths-about-the-brain",
+   "https://www.nature.com/scitable/blog/mind-read/lucy_is_wrong_we_use",
+   "https://www.smithsonianmag.com/science-nature/top-ten-myths-about-the-brain-178357288"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "Humans only use 10 percent of their brains.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.britannica.com/story/do-we-really-use-only-10-percent-of-our-brain",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.britannica.com/story/do-we-really-use-only-10-percent-of-our-brain",
+   "https://www.scientificamerican.com/article/do-people-only-use-10-percent-of-their-brains",
+   "https://www.scientificamerican.com/article/5-common-myths-about-the-brain",
+   "https://www.nature.com/scitable/blog/mind-read/lucy_is_wrong_we_use",
+   "https://www.smithsonianmag.com/science-nature/top-ten-myths-about-the-brain-178357288"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "Goldfish have a memory span of only three seconds.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.dw.com/en/the-forgotten-fish-a-new-look-at-our-underwater-friends/a-40224207",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.dw.com/en/the-forgotten-fish-a-new-look-at-our-underwater-friends/a-40224207",
+   "https://www.bbc.co.uk/programmes/articles/2hQLzX4xB9nryvlYRV339xy/are-fish-memories-really-as-bad-as-we-think-they-are",
+   "https://www.bbc.com/news/health-38896790",
+   "https://www.nationalgeographic.com/animals/article/150225-dogs-memories-animals-chimpanzees-science-mind-psychology",
+   "https://www.bbc.com/news/uk-england-oxfordshire-63242200"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "Goldfish have a memory span of only three seconds.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.dw.com/en/the-forgotten-fish-a-new-look-at-our-underwater-friends/a-40224207",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.dw.com/en/the-forgotten-fish-a-new-look-at-our-underwater-friends/a-40224207",
+   "https://www.bbc.co.uk/programmes/articles/2hQLzX4xB9nryvlYRV339xy/are-fish-memories-really-as-bad-as-we-think-they-are",
+   "https://www.bbc.com/news/health-38896790",
+   "https://www.nationalgeographic.com/animals/article/150225-dogs-memories-animals-chimpanzees-science-mind-psychology",
+   "https://www.bbc.com/news/uk-england-oxfordshire-63242200"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "Die Berliner Mauer fiel im November 1989.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://www.stiftung-berliner-mauer.de/de/themen/flucht-und-teilung",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.dw.com/downloads/26210916/07-der-mauerfall-ein-irrtum.pdf",
+   "https://www.planet-wissen.de/geschichte/deutsche_geschichte/die_berliner_mauer/index.html",
+   "https://www.dw.com/de/berliner-mauer-9-november-1989-stuecke-welt-mauersteine-mauerstuecke-mauerreste/a-74556033",
+   "https://www.berlin.de/tourismus/fotos/sehenswuerdigkeiten-fotos/3667388-1355138.gallery.html?page=2",
+   "https://www.stiftung-berliner-mauer.de/de/themen/flucht-und-teilung"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "Die Berliner Mauer fiel im November 1989.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://www.dw.com/downloads/26210916/07-der-mauerfall-ein-irrtum.pdf",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.dw.com/downloads/26210916/07-der-mauerfall-ein-irrtum.pdf",
+   "https://www.planet-wissen.de/geschichte/deutsche_geschichte/die_berliner_mauer/index.html",
+   "https://www.dw.com/de/berliner-mauer-9-november-1989-stuecke-welt-mauersteine-mauerstuecke-mauerreste/a-74556033",
+   "https://www.berlin.de/tourismus/fotos/sehenswuerdigkeiten-fotos/3667388-1355138.gallery.html?page=2",
+   "https://www.stiftung-berliner-mauer.de/de/themen/flucht-und-teilung"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "Lightning never strikes the same place twice.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.britannica.com/story/can-lightning-strike-the-same-place-twice",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.britannica.com/story/can-lightning-strike-the-same-place-twice",
+   "https://www.britannica.com/question/Can-lightning-strike-the-same-place-twice",
+   "https://en.wikipedia.org/wiki/Lightning",
+   "https://svs.gsfc.nasa.gov/30872",
+   "https://www.noaa.gov/stories/5-striking-facts-versus-myths-about-lightning-you-should-know"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "Lightning never strikes the same place twice.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.noaa.gov/stories/5-striking-facts-versus-myths-about-lightning-you-should-know",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.britannica.com/story/can-lightning-strike-the-same-place-twice",
+   "https://www.britannica.com/question/Can-lightning-strike-the-same-place-twice",
+   "https://en.wikipedia.org/wiki/Lightning",
+   "https://svs.gsfc.nasa.gov/30872",
+   "https://www.noaa.gov/stories/5-striking-facts-versus-myths-about-lightning-you-should-know"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "Water boils at 100 degrees Celsius at sea level.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://en.wikipedia.org/wiki/Boiling",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/Boiling_point",
+   "https://en.wikipedia.org/wiki/Boiling",
+   "http://www.britannica.com/science/boiling-phase-change",
+   "https://www.britannica.com/science/boiling-phase-change",
+   "https://en.wikipedia.org/wiki/High-altitude_cooking"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "Water boils at 100 degrees Celsius at sea level.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://en.wikipedia.org/wiki/Boiling_point",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/Boiling_point",
+   "https://en.wikipedia.org/wiki/Boiling",
+   "http://www.britannica.com/science/boiling-phase-change",
+   "https://www.britannica.com/science/boiling-phase-change",
+   "https://en.wikipedia.org/wiki/High-altitude_cooking"
+  ],
+  "scores": []
+ }
+]

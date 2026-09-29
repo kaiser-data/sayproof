@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sayproof Pitch Deck</title>
+<meta name="description" content="Sayproof: fact-check your talk before your audience does. Showcase deck for the Nebius x NVIDIA Global AI Hackathon.">
+<style>
+/* Layout: one slide per screen, left-aligned like a printed page; footnote rule + superscripts are the recurring device. Single light look on purpose (projector rooms are bright). */
+:root {
+  --paper: #fbfcfd;
+  --ink: #16202e;
+  --ink-soft: #4f5d70;
+  --rule: #d5dce5;
+  --mark: #ffe45c;          /* highlighter over a claim */
+  --accent: #2448c9;        /* footnote-marker blue */
+  --ok: #1f7a4d;  --ok-bg: #e3f3ea;
+  --bad: #b3261e; --bad-bg: #fbe6e4;
+  --old: #9a5b00; --old-bg: #fdf0d8;
+  --unk: #56606d; --unk-bg: #eceff3;
+  --display: Charter, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: "SF Mono", ui-monospace, Menlo, Consolas, "Liberation Mono", monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body { background: var(--paper); color: var(--ink); font-family: var(--body); overflow: hidden; }
+
+.deck { position: relative; height: 100%; }
+.slide {
+  position: absolute; inset: 0;
+  padding-block: clamp(28px, 6vh, 72px) clamp(72px, 10vh, 96px);
+  padding-inline: max(16px, 7vw);
+  display: flex; flex-direction: column; justify-content: center; gap: clamp(16px, 3vh, 32px);
+  opacity: 0; visibility: hidden; transition: opacity .35s ease;
+  overflow-y: auto;
+}
+.slide.active { opacity: 1; visibility: visible; }
+.slide > * { max-width: 100%; min-width: 0; }
+@media (prefers-reduced-motion: reduce) { .slide { transition: none; } }
+
+.eyebrow { font: 600 clamp(11px, 1.1vw, 14px)/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 0; }
+h1, h2 { font-family: var(--display); font-weight: 700; margin: 0; text-wrap: balance; letter-spacing: -.01em; }
+h1 { font-size: clamp(56px, 11vw, 150px); line-height: .95; }
+h2 { font-size: clamp(30px, 4.6vw, 64px); line-height: 1.08; max-width: 20ch; }
+p.lead { font-size: clamp(18px, 2.1vw, 28px); line-height: 1.4; color: var(--ink-soft); margin: 0; max-width: 42ch; }
+sup.fn { font: 700 .38em/1 var(--mono); color: var(--accent); vertical-align: super; margin-left: .06em; }
+mark { background: linear-gradient(transparent 12%, var(--mark) 12%, var(--mark) 88%, transparent 88%); color: inherit; padding: 0 .12em; }
+
+.footrule { position: relative; padding-top: 12px; font: 400 clamp(12px, 1.2vw, 16px)/1.5 var(--mono); color: var(--ink-soft); max-width: 60ch; }
+.footrule::before { content: ""; position: absolute; left: 0; top: 0; width: min(220px, 40%); border-top: 1.5px solid var(--ink); }
+.footrule b { color: var(--accent); font-weight: 700; }
+
+.sponsors { display: flex; flex-wrap: wrap; gap: 8px 22px; font: 500 clamp(12px, 1.2vw, 15px)/1.4 var(--mono); color: var(--ink-soft); }
+
+/* two-column compare */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 3vw, 48px); max-width: 1100px; }
+.split > div { min-width: 0; border-top: 1.5px solid var(--rule); padding-top: 14px; }
+.split h3 { font: 600 clamp(12px, 1.2vw, 15px)/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; margin: 0 0 10px; color: var(--ink-soft); }
+.split p { font-size: clamp(17px, 1.9vw, 25px); line-height: 1.4; margin: 0; }
+.split .yes h3 { color: var(--accent); }
+.split .yes { border-top-color: var(--accent); }
+
+/* receipt */
+.receipt { max-width: 1100px; width: 100%; border: 1.5px solid var(--ink); border-radius: 4px; background: #fff; }
+.receipt-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 10px 16px; border-bottom: 1.5px solid var(--ink); font: 500 clamp(11px, 1.1vw, 14px)/1.4 var(--mono); color: var(--ink-soft); }
+.row { display: grid; grid-template-columns: 4.2em 1fr auto; gap: 6px 16px; align-items: baseline; padding: 12px 16px; border-bottom: 1px solid var(--rule); }
+.row:last-child { border-bottom: 0; }
+.ts { font: 500 clamp(12px, 1.1vw, 15px)/1.4 var(--mono); color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.claim { min-width: 0; font-size: clamp(15px, 1.6vw, 21px); line-height: 1.35; }
+.claim small { display: block; font: 400 clamp(11px, 1.05vw, 14px)/1.45 var(--mono); color: var(--ink-soft); margin-top: 4px; }
+.claim small i { font-style: normal; color: var(--ink); }
+.pill { font: 700 clamp(10px, 1vw, 13px)/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; padding: 6px 9px; border-radius: 3px; white-space: nowrap; }
+.pill.ok  { color: var(--ok);  background: var(--ok-bg); }
+.pill.bad { color: var(--bad); background: var(--bad-bg); }
+.pill.old { color: var(--old); background: var(--old-bg); }
+.pill.unk { color: var(--unk); background: var(--unk-bg); }
+.note { font: 400 clamp(11px, 1.05vw, 14px)/1.4 var(--mono); color: var(--ink-soft); margin: 0; }
+
+/* loop */
+.loop { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; max-width: 1100px; counter-reset: step; }
+.loop li { list-style: none; border-top: 3px solid var(--ink); padding: 14px 18px 0 0; position: relative; }
+.loop li::before { counter-increment: step; content: counter(step); font: 700 clamp(12px, 1.2vw, 15px)/1 var(--mono); color: var(--accent); display: block; margin-bottom: 10px; }
+.loop li:not(:last-child)::after { content: "→"; position: absolute; top: -.75em; right: 10px; font: 700 22px/1 var(--body); color: var(--ink); background: var(--paper); padding: 0 4px; }
+.loop strong { display: block; font-family: var(--display); font-size: clamp(20px, 2.3vw, 32px); margin-bottom: 6px; }
+.loop span { font-size: clamp(14px, 1.4vw, 19px); line-height: 1.4; color: var(--ink-soft); }
+.takes { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 3vw, 40px); max-width: 1100px; }
+.takes > div { min-width: 0; }
+.takes .lbl { font: 600 clamp(11px, 1.1vw, 14px)/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 8px; }
+.takes q { font-family: var(--display); font-size: clamp(18px, 2.2vw, 30px); line-height: 1.3; quotes: "“" "”"; }
+.strike { text-decoration: line-through; text-decoration-color: var(--bad); text-decoration-thickness: 2px; color: var(--ink-soft); }
+
+/* pipeline */
+.pipe { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(10px, 1.5vw, 20px); max-width: 1150px; }
+.stage { min-width: 0; border: 1.5px solid var(--ink); border-radius: 4px; padding: 14px 16px; background: #fff; }
+.stage .who { font: 700 clamp(10px, 1vw, 13px)/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.stage strong { display: block; font-family: var(--display); font-size: clamp(19px, 2vw, 28px); margin: 8px 0 6px; }
+.stage span { font-size: clamp(13px, 1.3vw, 17px); line-height: 1.4; color: var(--ink-soft); }
+
+
+/* cold open */
+.coldline { font-family: var(--display); font-weight: 700; font-size: clamp(40px, 7.5vw, 110px); line-height: 1.05; margin: 0; text-wrap: balance; }
+.struck { background-image: linear-gradient(var(--bad), var(--bad)); background-repeat: no-repeat; background-position: 0 58%; background-size: 0% .07em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.cold.active .struck { animation: strike .7s cubic-bezier(.6,0,.2,1) 1.4s forwards; }
+.cold .footrule { opacity: 1; }
+.cold.active .footrule { animation: rise .5s ease 2s both; }
+@keyframes strike { to { background-size: 100% .07em; } }
+@keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .struck { background-size: 100% .07em; } .cold.active .struck, .cold.active .footrule { animation: none; } }
+.rule-line { font-size: clamp(28px, 4vw, 54px); }
+
+.who-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; max-width: 1100px; }
+.who-row span { font: 500 clamp(12px, 1.25vw, 16px)/1 var(--mono); padding: 8px 11px; border: 1.5px solid var(--ink); border-radius: 999px; }
+
+/* chrome */
+.bar { position: fixed; left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: 16px; padding: 12px max(16px, 7vw) calc(12px + env(safe-area-inset-bottom, 0px)); font: 500 13px/1 var(--mono); color: var(--ink-soft); z-index: 5; background: var(--paper); }
+.bar button { font: inherit; color: var(--ink); background: transparent; border: 1.5px solid var(--rule); border-radius: 3px; padding: 7px 11px; cursor: pointer; }
+.bar button:hover { border-color: var(--ink); }
+.bar button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.bar .spacer { flex: 1; }
+.count { font-variant-numeric: tabular-nums; }
+.progress { position: fixed; left: 0; top: 0; height: 3px; background: var(--accent); transition: width .35s ease; z-index: 6; }
+.clock { font-variant-numeric: tabular-nums; }
+.clock.over { color: var(--bad); font-weight: 700; }
+
+.notes { position: fixed; right: max(16px, 2vw); bottom: 64px; width: min(460px, calc(100% - 32px)); max-height: 45vh; overflow: auto; background: var(--ink); color: var(--paper); border-radius: 4px; padding: 14px 16px; font-size: 15px; line-height: 1.5; z-index: 7; }
+.notes h4 { margin: 0 0 6px; font: 600 11px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--mark); }
+.notes p { margin: 0; }
+
+@media (max-width: 760px) {
+  body { overflow: auto; }
+  .split, .takes { grid-template-columns: 1fr; }
+  .loop, .pipe { grid-template-columns: 1fr 1fr; row-gap: 22px; }
+  .loop li:nth-child(2)::after { display: none; }
+  .row { grid-template-columns: 1fr auto; }
+  .row .ts { grid-column: 1 / -1; }
+  .bar .hint { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<main class="deck" id="deck">
+
+  <!-- 1 cold open -->
+  <section class="slide cold" data-notes="[Pause. Let the line sit.] 'Pluto is our ninth planet.' [beat] Say that in a talk today, and someone in the room googles it before you finish the sentence.">
+    <p class="eyebrow">Rehearsal · take 1 · 00:02</p>
+    <p class="coldline"><span class="struck">Pluto is our ninth planet.</span><sup class="fn">1</sup></p>
+    <div class="footrule"><b>1</b> Outdated. Reclassified as a dwarf planet in 2006 (IAU Resolution B5).</div>
+  </section>
+
+  <!-- 2 title -->
+  <section class="slide" data-notes="I'm [your name]. This is Sayproof. It fact-checks your talk before your audience does.">
+    <p class="eyebrow">Nebius × NVIDIA Global AI Hackathon · Berlin</p>
+    <h1>Sayproof<sup class="fn">1</sup></h1>
+    <p class="lead">Fact-check your talk <mark>before your audience does</mark>.</p>
+    <div class="footrule"><b>1</b> NVIDIA Parakeet + Nemotron on Nebius Token Factory, with live evidence from Tavily.</div>
+  </section>
+
+  <!-- 3 problem -->
+  <section class="slide" data-notes="Think of anyone who has to stand up and speak: a student with a presentation, a founder with a pitch, a speaker at a conference. We rehearse how we sound. We rarely check what we claim. And that's the part people google.">
+    <p class="eyebrow">The problem</p>
+    <h2>Your audience has a phone. <mark>And Google.</mark></h2>
+    <p class="who-row"><span>Students with a presentation</span><span>Founders with a pitch</span><span>Speakers at a conference</span><span>Anyone giving a speech</span></p>
+    <div class="split">
+      <div><h3>How you sound</h3><p>Pace, filler words, energy. What you usually rehearse.</p></div>
+      <div class="yes"><h3>What you claim</h3><p>Your facts, checked against the web, with a source you can put on your slide.</p></div>
+    </div>
+  </section>
+
+  <!-- 4 receipt -->
+  <section class="slide" data-notes="Here's one rehearsal: twenty seconds, four claims. Sayproof listened, picked out the claims, and checked each one on the web. Pluto: outdated. The Great Wall from space: contradicted. The Eiffel Tower growing in summer: yes, really, supported. 'Our users tripled': it can't check that, so it asks you for a source instead of guessing.">
+    <p class="eyebrow">One rehearsal, four claims</p>
+    <div class="receipt" role="table" aria-label="Example claim check">
+      <div class="receipt-head"><span>take 1 · 0:21 · 4 claims found</span><span>1 outdated · 1 contradicted · 1 supported · 1 can't verify</span></div>
+      <div class="row" role="row">
+        <span class="ts">00:02</span>
+        <div class="claim">“Pluto is our ninth planet.”<small>Reclassified as a dwarf planet in 2006. <i>Source: IAU Resolution B5 (2006)</i></small></div>
+        <span class="pill old">Outdated</span>
+      </div>
+      <div class="row" role="row">
+        <span class="ts">00:06</span>
+        <div class="claim">“You can see the Great Wall from space.”<small>Not visible to the naked eye from orbit. <i>Source: NASA Earth Observatory</i></small></div>
+        <span class="pill bad">Contradicted</span>
+      </div>
+      <div class="row" role="row">
+        <span class="ts">00:11</span>
+        <div class="claim">“The Eiffel Tower grows in summer.”<small>Thermal expansion adds up to ~15 cm. <i>Source: official Eiffel Tower site</i></small></div>
+        <span class="pill ok">Supported</span>
+      </div>
+      <div class="row" role="row">
+        <span class="ts">00:17</span>
+        <div class="claim">“Our users tripled this year.”<small>Private data: no public source. Add your own citation.</small></div>
+        <span class="pill unk">Can't verify</span>
+      </div>
+    </div>
+    <p class="note">Example receipt. Try it with your own text at sayproof.vercel.app</p>
+  </section>
+
+  <!-- 5 loop -->
+  <section class="slide" data-notes="You fix the line. You rehearse again. Take two comes back clean.">
+    <p class="eyebrow">The loop</p>
+    <ol class="loop">
+      <li><strong>Rehearse</strong><span>Talk out loud, or upload a recording.</span></li>
+      <li><strong>Inspect</strong><span>Every claim gets a verdict and the quote behind it.</span></li>
+      <li><strong>Correct</strong><span>Take the suggested line, with its source.</span></li>
+      <li><strong>Re-rehearse</strong><span>Take two comes back clean.</span></li>
+    </ol>
+    <div class="takes">
+      <div><div class="lbl">Take 1</div><q><span class="strike">Pluto is our ninth planet.</span></q></div>
+      <div><div class="lbl">Take 2</div><q>Pluto was our ninth planet, until 2006.<sup class="fn">1</sup></q></div>
+    </div>
+  </section>
+
+  <!-- 6 how -->
+  <section class="slide" data-notes="Under the hood: NVIDIA Parakeet turns your speech into text. Nemotron on Nebius finds the claims and writes the verdicts. Tavily brings the evidence. One rule: no source, no verdict.">
+    <p class="eyebrow">How it works</p>
+    <div class="pipe">
+      <div class="stage"><div class="who">NVIDIA Parakeet</div><strong>Transcribe</strong><span>Speech to text with word timestamps.</span></div>
+      <div class="stage"><div class="who">Nemotron · Nebius</div><strong>Extract</strong><span>Only checkable claims, not opinions.</span></div>
+      <div class="stage"><div class="who">Tavily</div><strong>Search</strong><span>Live web evidence for each claim, in parallel.</span></div>
+      <div class="stage"><div class="who">Nemotron · Nebius</div><strong>Verdict</strong><span>Supported, contradicted, outdated, or can't verify.</span></div>
+    </div>
+    <h2 class="rule-line">No source, <mark>no verdict.</mark></h2>
+  </section>
+
+  <!-- 7 close -->
+  <section class="slide" data-notes="Sayproof. Check your facts before your audience does. Try it at sayproof dot vercel dot app. Thank you.">
+    <p class="eyebrow">Sayproof</p>
+    <h2>Check your facts <mark>before</mark> your audience does.</h2>
+    <p class="lead">Say it with sources. Try it: <mark>sayproof.vercel.app</mark></p>
+    <div class="sponsors"><span>NVIDIA Parakeet</span><span>NVIDIA Nemotron</span><span>Nebius Token Factory</span><span>Tavily</span></div>
+  </section>
+
+</main>
+
+<aside class="notes" id="notes" hidden><h4>Speaker notes</h4><p id="notesText"></p></aside>
+
+<nav class="bar" aria-label="Slide controls">
+  <button id="prev" type="button" aria-label="Previous slide">←</button>
+  <span class="count" id="count">1 / 7</span>
+  <button id="next" type="button" aria-label="Next slide">→</button>
+  <span class="spacer"></span>
+  <span class="hint">keys: ← → · N notes · T timer</span>
+  <button id="timerBtn" type="button" aria-label="Start or reset 90 second timer"><span class="clock" id="clock">1:30</span></button>
+  <button id="notesBtn" type="button" aria-pressed="false">Notes</button>
+</nav>
+
+<script>
+(function () {
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var i = 0;
+  var countEl = document.getElementById('count');
+  var progress = document.getElementById('progress');
+  var notes = document.getElementById('notes');
+  var notesText = document.getElementById('notesText');
+  var notesBtn = document.getElementById('notesBtn');
+
+  function fromHash() {
+    var n = parseInt((location.hash || '').replace('#s', ''), 10);
+    return n >= 1 && n <= slides.length ? n - 1 : 0;
+  }
+  function show(n) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach(function (s, k) { s.classList.toggle('active', k === i); s.setAttribute('aria-hidden', k === i ? 'false' : 'true'); });
+    countEl.textContent = (i + 1) + ' / ' + slides.length;
+    progress.style.width = ((i + 1) / slides.length * 100) + '%';
+    notesText.textContent = slides[i].getAttribute('data-notes') || '';
+    if (history.replaceState) history.replaceState(null, '', '#s' + (i + 1));
+  }
+  function toggleNotes() {
+    notes.hidden = !notes.hidden;
+    notesBtn.setAttribute('aria-pressed', String(!notes.hidden));
+  }
+
+  // 90-second pitch timer
+  var clock = document.getElementById('clock');
+  var total = 90, left = total, timer = null;
+  function paint() {
+    var s = Math.abs(left), txt = Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+    clock.textContent = (left < 0 ? '+' : '') + txt;
+    clock.classList.toggle('over', left < 0);
+  }
+  function toggleTimer() {
+    if (timer) { clearInterval(timer); timer = null; left = total; paint(); return; }
+    timer = setInterval(function () { left -= 1; paint(); }, 1000);
+  }
+
+  document.getElementById('prev').addEventListener('click', function () { show(i - 1); });
+  document.getElementById('next').addEventListener('click', function () { show(i + 1); });
+  notesBtn.addEventListener('click', toggleNotes);
+  document.getElementById('timerBtn').addEventListener('click', toggleTimer);
+  document.addEventListener('keydown', function (e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (['ArrowRight', 'PageDown', ' '].indexOf(e.key) > -1) { e.preventDefault(); show(i + 1); }
+    else if (['ArrowLeft', 'PageUp'].indexOf(e.key) > -1) { e.preventDefault(); show(i - 1); }
+    else if (e.key === 'Home') show(0);
+    else if (e.key === 'End') show(slides.length - 1);
+    else if (e.key === 'n' || e.key === 'N') toggleNotes();
+    else if (e.key === 't' || e.key === 'T') toggleTimer();
+  });
+  var touchX = null;
+  document.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener('touchend', function (e) {
+    if (touchX === null) return;
+    var dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) show(i + (dx < 0 ? 1 : -1));
+    touchX = null;
+  });
+  window.addEventListener('hashchange', function () { show(fromHash()); });
+  show(fromHash());
+})();
+</script>
+</body>
+</html>

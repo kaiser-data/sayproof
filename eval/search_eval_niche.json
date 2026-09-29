@@ -1,0 +1,1026 @@
+[
+ {
+  "config": "A_current",
+  "claim": "The Berlin TV Tower is 368 metres tall.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://www.bigbustours.com/en/berlin/berlin-landmarks-tv-tower",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.bigbustours.com/en/berlin/berlin-landmarks-tv-tower",
+   "https://mapy.com/en?source=osm&id=149371105",
+   "https://www.berlin-tickets.com/tv-tower/facts",
+   "https://www.berlinwalk.com/post/the-tv-tower-10-things-you-didn-t-know-about-berlin-s-most-famous-landmark",
+   "https://realty-germany.com/articles/berlinskaya-telebashnya"
+  ],
+  "scores": [
+   0.9587584,
+   0.95186776,
+   0.933534,
+   0.929036,
+   0.92392945
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "The Berlin TV Tower is 368 metres tall.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://www.bigbustours.com/en/berlin/berlin-landmarks-tv-tower",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.bigbustours.com/en/berlin/berlin-landmarks-tv-tower",
+   "https://mapy.com/en?source=osm&id=149371105",
+   "https://www.berlin-tickets.com/tv-tower/facts",
+   "https://www.berlinwalk.com/post/the-tv-tower-10-things-you-didn-t-know-about-berlin-s-most-famous-landmark",
+   "https://realty-germany.com/articles/berlinskaya-telebashnya"
+  ],
+  "scores": [
+   0.9587584,
+   0.95186776,
+   0.933534,
+   0.929036,
+   0.92392945
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "Python was first released in 1991.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://en.wikipedia.org/wiki/Python_(programming_language)",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/Python_(programming_language)",
+   "https://www.udacity.com/blog/the-rise-of-the-python-programming-language",
+   "https://news.ycombinator.com/item?id=46985607",
+   "https://pythoninstitute.org/about-python",
+   "https://brainly.in/question/59711210"
+  ],
+  "scores": [
+   0.90227455,
+   0.8987045,
+   0.8936907,
+   0.8839694,
+   0.8747745
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "Python was first released in 1991.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://en.wikipedia.org/wiki/Python_(programming_language)",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/Python_(programming_language)",
+   "https://www.udacity.com/blog/the-rise-of-the-python-programming-language",
+   "https://news.ycombinator.com/item?id=46985607",
+   "https://pythoninstitute.org/about-python",
+   "https://brainly.in/question/59711210"
+  ],
+  "scores": [
+   0.90227455,
+   0.8987045,
+   0.8936907,
+   0.8839694,
+   0.8747745
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "The first iPhone was released in 2007.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://en.wikipedia.org/wiki/IPhone",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/IPhone",
+   "https://en.wikipedia.org/wiki/History_of_the_iPhone",
+   "https://setapp.com/how-to/every-iphone-release-in-chronological-order",
+   "https://en.wikipedia.org/wiki/IPhone_(1st_generation)",
+   "https://apple.fandom.com/wiki/IPhone_(1st_generation)"
+  ],
+  "scores": [
+   0.9125066,
+   0.8863518,
+   0.8706085,
+   0.86767644,
+   0.86024034
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "The first iPhone was released in 2007.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://en.wikipedia.org/wiki/IPhone",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/IPhone",
+   "https://en.wikipedia.org/wiki/History_of_the_iPhone",
+   "https://setapp.com/how-to/every-iphone-release-in-chronological-order",
+   "https://en.wikipedia.org/wiki/IPhone_(1st_generation)",
+   "https://apple.fandom.com/wiki/IPhone_(1st_generation)"
+  ],
+  "scores": [
+   0.9125066,
+   0.8863518,
+   0.8706085,
+   0.86767644,
+   0.86024034
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "The Bitcoin whitepaper was published in 2008.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://www.binance.com/en/academy/articles/the-bitcoin-whitepaper-explained",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.binance.com/en/academy/articles/the-bitcoin-whitepaper-explained",
+   "https://www.bitpanda.com/en/academy/the-bitcoin-whitepaper-simply-explained",
+   "https://www.coinbase.com/learn/crypto-basics/bitcoin-whitepaper-simplified-for-everyone",
+   "https://www.coindesk.com/markets/2025/11/01/satoshi-s-bitcoin-whitepaper-turns-17-from-cypherpunk-rebellion-to-wall-street-staple",
+   "https://bitbo.io/calendar/whitepaper"
+  ],
+  "scores": [
+   0.92620385,
+   0.9202254,
+   0.9174287,
+   0.9145431,
+   0.9073207
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "The Bitcoin whitepaper was published in 2008.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://www.binance.com/en/academy/articles/the-bitcoin-whitepaper-explained",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.binance.com/en/academy/articles/the-bitcoin-whitepaper-explained",
+   "https://www.bitpanda.com/en/academy/the-bitcoin-whitepaper-simply-explained",
+   "https://www.coinbase.com/learn/crypto-basics/bitcoin-whitepaper-simplified-for-everyone",
+   "https://www.coindesk.com/markets/2025/11/01/satoshi-s-bitcoin-whitepaper-turns-17-from-cypherpunk-rebellion-to-wall-street-staple",
+   "https://bitbo.io/calendar/whitepaper"
+  ],
+  "scores": [
+   0.92620385,
+   0.9202254,
+   0.9174287,
+   0.9145431,
+   0.9073207
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "Rust 1.0 was released in 2015.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://learnxinyminutes.com/rust",
+  "n_results": 5,
+  "result_urls": [
+   "https://news.ycombinator.com/item?id=42220523",
+   "https://learnxinyminutes.com/rust",
+   "https://medium.com/@mattdark/rust-a-systems-programming-language-272ca761dfa0",
+   "https://en.wikipedia.org/wiki/Rust_(programming_language)",
+   "https://doc.rust-lang.org/edition-guide/rust-2015/index.html"
+  ],
+  "scores": [
+   0.9304142,
+   0.923268,
+   0.90039873,
+   0.8976328,
+   0.8925721
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "Rust 1.0 was released in 2015.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://learnxinyminutes.com/rust",
+  "n_results": 5,
+  "result_urls": [
+   "https://news.ycombinator.com/item?id=42220523",
+   "https://learnxinyminutes.com/rust",
+   "https://medium.com/@mattdark/rust-a-systems-programming-language-272ca761dfa0",
+   "https://en.wikipedia.org/wiki/Rust_(programming_language)",
+   "https://doc.rust-lang.org/edition-guide/rust-2015/index.html"
+  ],
+  "scores": [
+   0.9304142,
+   0.923268,
+   0.90039873,
+   0.8976328,
+   0.8925721
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "The Elbphilharmonie concert hall is in Berlin.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://en.wikipedia.org/wiki/Elbphilharmonie",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.reddit.com/r/ThingsCutInHalfPorn/comments/1r1wg0q/elbphilharmonie_concert_hall_in_hamburg_germany",
+   "https://en.wikipedia.org/wiki/Elbphilharmonie",
+   "https://www.schnetzerpuskas.com/en/projects/1244-elbphilharmonie",
+   "https://www.tripadvisor.com/Attraction_Review-g187331-d1969484-Reviews-Elbphilharmonie-Hamburg.html",
+   "https://www.elbphilharmonie.de/en/the-halls"
+  ],
+  "scores": [
+   0.8066246,
+   0.8016413,
+   0.6742441,
+   0.59089786,
+   0.57894874
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "The Elbphilharmonie concert hall is in Berlin.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://en.wikipedia.org/wiki/Elbphilharmonie",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.reddit.com/r/ThingsCutInHalfPorn/comments/1r1wg0q/elbphilharmonie_concert_hall_in_hamburg_germany",
+   "https://en.wikipedia.org/wiki/Elbphilharmonie",
+   "https://www.schnetzerpuskas.com/en/projects/1244-elbphilharmonie",
+   "https://www.tripadvisor.com/Attraction_Review-g187331-d1969484-Reviews-Elbphilharmonie-Hamburg.html",
+   "https://www.elbphilharmonie.de/en/the-halls"
+  ],
+  "scores": [
+   0.8066246,
+   0.8016413,
+   0.6742441,
+   0.59089786,
+   0.57894874
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "Kreuzberg ist ein Stadtteil von München.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.sueddeutsche.de/muenchen/beliebte-stadtviertel-in-muenchen-wo-es-die-jungen-leute-hinzieht-1.2056791",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.sueddeutsche.de/muenchen/beliebte-stadtviertel-in-muenchen-wo-es-die-jungen-leute-hinzieht-1.2056791",
+   "https://officehome.de/news/das_kulturjahr_in_der_prinzessinnenstrasse",
+   "https://bei-uns-in-muenchen.de/altstadt-kreuzviertel",
+   "https://muenchen.mitvergnuegen.com/neukoelln-nach-untergiesing/muenchen-kiez-feeling",
+   "https://smartsite2.myonoffice.de/kunden/brau/7/immobilien.xhtml?f%5B18695-3%5D=Berlin&f%5B18695-5%5D=&f%5B18695-7%5D=kauf&s%5B18695-29%5D=1&s%5B18695-31%5D=1&id%5Bobj0%5D=5391"
+  ],
+  "scores": [
+   0.61196244,
+   0.58123237,
+   0.43295085,
+   0.40330887,
+   0.33528608
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "Kreuzberg ist ein Stadtteil von München.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.sueddeutsche.de/muenchen/beliebte-stadtviertel-in-muenchen-wo-es-die-jungen-leute-hinzieht-1.2056791",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.sueddeutsche.de/muenchen/beliebte-stadtviertel-in-muenchen-wo-es-die-jungen-leute-hinzieht-1.2056791",
+   "https://officehome.de/news/das_kulturjahr_in_der_prinzessinnenstrasse",
+   "https://bei-uns-in-muenchen.de/altstadt-kreuzviertel",
+   "https://muenchen.mitvergnuegen.com/neukoelln-nach-untergiesing/muenchen-kiez-feeling",
+   "https://smartsite2.myonoffice.de/kunden/brau/7/immobilien.xhtml?f%5B18695-3%5D=Berlin&f%5B18695-5%5D=&f%5B18695-7%5D=kauf&s%5B18695-29%5D=1&s%5B18695-31%5D=1&id%5Bobj0%5D=5391"
+  ],
+  "scores": [
+   0.61196244,
+   0.58123237,
+   0.43295085,
+   0.40330887,
+   0.33528608
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "Der Fernsehturm am Alexanderplatz wurde 1969 eröffnet.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://www.picture-alliance.com/webseries/fernsehturm-berlin-alexanderplatz-w194134",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.picture-alliance.com/webseries/fernsehturm-berlin-alexanderplatz-w194134",
+   "https://www.19xx.de/berlin/fernsehturm",
+   "https://www.rbb24.de/panorama/beitrag/2024/10/berlin-fernsehturm-jubilaeum-ddr-wahrzeichen-alexanderplatz.html",
+   "https://www.ddr-museum.de/de/blog/der-berliner-fernsehturm",
+   "https://de.wikipedia.org/wiki/Berliner_Fernsehturm"
+  ],
+  "scores": [
+   0.9412289,
+   0.90018827,
+   0.8936907,
+   0.89189607,
+   0.8805613
+  ]
+ },
+ {
+  "config": "A_current",
+  "claim": "Der Fernsehturm am Alexanderplatz wurde 1969 eröffnet.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://www.picture-alliance.com/webseries/fernsehturm-berlin-alexanderplatz-w194134",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.picture-alliance.com/webseries/fernsehturm-berlin-alexanderplatz-w194134",
+   "https://www.19xx.de/berlin/fernsehturm",
+   "https://www.rbb24.de/panorama/beitrag/2024/10/berlin-fernsehturm-jubilaeum-ddr-wahrzeichen-alexanderplatz.html",
+   "https://www.ddr-museum.de/de/blog/der-berliner-fernsehturm",
+   "https://de.wikipedia.org/wiki/Berliner_Fernsehturm"
+  ],
+  "scores": [
+   0.9412289,
+   0.90018827,
+   0.8936907,
+   0.89189607,
+   0.8805613
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "The Berlin TV Tower is 368 metres tall.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://simple.wikipedia.org/wiki/Fernsehturm",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/List_of_tallest_structures",
+   "https://simple.wikipedia.org/wiki/Fernsehturm",
+   "https://amp.dw.com/en/berlin-tv-tower-construction-began-50-years-ago/a-18626516",
+   "https://www.dw.com/en/berlin-tv-tower-construction-began-50-years-ago/a-18626516",
+   "https://en.wikipedia.org/wiki/Fernsehturm_Berlin"
+  ],
+  "scores": [
+   0.7756902,
+   0.95696133,
+   0.9372167,
+   0.9301101,
+   0.918663
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "The Berlin TV Tower is 368 metres tall.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://simple.wikipedia.org/wiki/Fernsehturm",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/List_of_tallest_structures",
+   "https://simple.wikipedia.org/wiki/Fernsehturm",
+   "https://amp.dw.com/en/berlin-tv-tower-construction-began-50-years-ago/a-18626516",
+   "https://www.dw.com/en/berlin-tv-tower-construction-began-50-years-ago/a-18626516",
+   "https://en.wikipedia.org/wiki/Fernsehturm_Berlin"
+  ],
+  "scores": [
+   0.7756902,
+   0.95696133,
+   0.9372167,
+   0.9301101,
+   0.918663
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "Python was first released in 1991.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://en.wikipedia.org/wiki/Python_(programming_language)",
+  "n_results": 5,
+  "result_urls": [
+   "https://sco.wikipedia.org/wiki/Python_(programmin_leid)",
+   "https://en.wikipedia.org/wiki/Python_(programming_language)",
+   "https://en.wikipedia.org/wiki/Outline_of_the_Python_programming_language",
+   "https://simple.wikipedia.org/wiki/Python_(programming_language)",
+   "https://en.wikipedia.org/wiki/History_of_Python"
+  ],
+  "scores": [
+   0.91306627,
+   0.90227455,
+   0.8834878,
+   0.83290404,
+   0.8266142
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "Python was first released in 1991.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://en.wikipedia.org/wiki/Python_(programming_language)",
+  "n_results": 5,
+  "result_urls": [
+   "https://sco.wikipedia.org/wiki/Python_(programmin_leid)",
+   "https://en.wikipedia.org/wiki/Python_(programming_language)",
+   "https://en.wikipedia.org/wiki/Outline_of_the_Python_programming_language",
+   "https://simple.wikipedia.org/wiki/Python_(programming_language)",
+   "https://en.wikipedia.org/wiki/History_of_Python"
+  ],
+  "scores": [
+   0.91306627,
+   0.90227455,
+   0.8834878,
+   0.83290404,
+   0.8266142
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "The first iPhone was released in 2007.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://apnews.com/today-in-history/june-29",
+  "n_results": 5,
+  "result_urls": [
+   "https://apnews.com/today-in-history/june-29",
+   "https://www.britannica.com/topic/list-of-iPhone-models",
+   "https://www.bbc.co.uk/news/newsbeat-47056309",
+   "https://www.bbc.com/news/technology-66222296",
+   "https://www.bbc.com/news/technology-38552241"
+  ],
+  "scores": [
+   0.8106142,
+   0.7946564,
+   0.7933146,
+   0.79022324,
+   0.7785319
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "The first iPhone was released in 2007.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://apnews.com/today-in-history/june-29",
+  "n_results": 5,
+  "result_urls": [
+   "https://apnews.com/today-in-history/june-29",
+   "https://www.britannica.com/topic/list-of-iPhone-models",
+   "https://www.bbc.co.uk/news/newsbeat-47056309",
+   "https://www.bbc.com/news/technology-66222296",
+   "https://www.bbc.com/news/technology-38552241"
+  ],
+  "scores": [
+   0.8106142,
+   0.7946564,
+   0.7933146,
+   0.79022324,
+   0.7785319
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "The Bitcoin whitepaper was published in 2008.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://en.wikipedia.org/wiki/Bitcoin",
+  "n_results": 5,
+  "result_urls": [
+   "https://pmc.ncbi.nlm.nih.gov/articles/PMC8730302",
+   "https://op.europa.eu/publication/manifestation_identifier/PUB_QM0924368ENN",
+   "https://en.wikipedia.org/wiki/Bitcoin",
+   "https://www.theguardian.com/books/2019/jun/26/the-white-paper-satoshi-nakamoto-review",
+   "https://www.reuters.com/world/uk/self-proclaimed-bitcoin-inventor-did-not-invent-bitcoin-uk-judge-rules-2024-03-14"
+  ],
+  "scores": [
+   0.86024034,
+   0.8536326,
+   0.850382,
+   0.7906115,
+   0.78194773
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "The Bitcoin whitepaper was published in 2008.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://en.wikipedia.org/wiki/Bitcoin",
+  "n_results": 5,
+  "result_urls": [
+   "https://pmc.ncbi.nlm.nih.gov/articles/PMC8730302",
+   "https://op.europa.eu/publication/manifestation_identifier/PUB_QM0924368ENN",
+   "https://en.wikipedia.org/wiki/Bitcoin",
+   "https://www.theguardian.com/books/2019/jun/26/the-white-paper-satoshi-nakamoto-review",
+   "https://www.reuters.com/world/uk/self-proclaimed-bitcoin-inventor-did-not-invent-bitcoin-uk-judge-rules-2024-03-14"
+  ],
+  "scores": [
+   0.86024034,
+   0.8536326,
+   0.850382,
+   0.7906115,
+   0.78194773
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "Rust 1.0 was released in 2015.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://en.wikipedia.org/wiki/Rust_(programming_language)",
+  "n_results": 5,
+  "result_urls": [
+   "https://zh.wikipedia.org/zh-cn/Rust_(%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80)",
+   "https://en.wikipedia.org/wiki/Rust_(programming_language)",
+   "https://en.wikipedia.org/wiki/Rust_compiler",
+   "https://en.wikipedia.org/wiki/Outline_of_the_Rust_programming_language",
+   "https://indico.esa.int/event/528/attachments/5988/10197/Bringing_Rust_to_Safety_Critical_Systems_in_Space.pdf"
+  ],
+  "scores": [
+   0.8997663,
+   0.8976328,
+   0.8965509,
+   0.8668671,
+   0.8593928
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "Rust 1.0 was released in 2015.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://en.wikipedia.org/wiki/Rust_(programming_language)",
+  "n_results": 5,
+  "result_urls": [
+   "https://zh.wikipedia.org/zh-cn/Rust_(%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80)",
+   "https://en.wikipedia.org/wiki/Rust_(programming_language)",
+   "https://en.wikipedia.org/wiki/Rust_compiler",
+   "https://en.wikipedia.org/wiki/Outline_of_the_Rust_programming_language",
+   "https://indico.esa.int/event/528/attachments/5988/10197/Bringing_Rust_to_Safety_Critical_Systems_in_Space.pdf"
+  ],
+  "scores": [
+   0.8997663,
+   0.8976328,
+   0.8965509,
+   0.8668671,
+   0.8593928
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "The Elbphilharmonie concert hall is in Berlin.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://en.wikipedia.org/wiki/Elbphilharmonie",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/Elbphilharmonie",
+   "https://de.wikipedia.org/wiki/Elbphilharmonie",
+   "https://www.dw.com/en/elbphilharmonie-hamburgs-iconic-concert-hall-turns-5/a-60379890",
+   "https://www.dw.com/en/elbphilharmonie/t-36292662/page-2",
+   "https://ru.wikipedia.org/wiki/commons:Category:Elbphilharmonie"
+  ],
+  "scores": [
+   0.8016413,
+   0.7060491,
+   0.6580885,
+   0.65279555,
+   0.6172364
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "The Elbphilharmonie concert hall is in Berlin.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://en.wikipedia.org/wiki/Elbphilharmonie",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/Elbphilharmonie",
+   "https://de.wikipedia.org/wiki/Elbphilharmonie",
+   "https://www.dw.com/en/elbphilharmonie-hamburgs-iconic-concert-hall-turns-5/a-60379890",
+   "https://www.dw.com/en/elbphilharmonie/t-36292662/page-2",
+   "https://ru.wikipedia.org/wiki/commons:Category:Elbphilharmonie"
+  ],
+  "scores": [
+   0.8016413,
+   0.7060491,
+   0.6580885,
+   0.65279555,
+   0.6172364
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "Kreuzberg ist ein Stadtteil von München.",
+  "expected": "contradicted",
+  "verdict": "unverified",
+  "guard": "verdict error: Expecting value: line 3 column 18 (char 48)",
+  "source": null,
+  "n_results": 5,
+  "result_urls": [
+   "https://de.wikipedia.org/wiki/Kreuzberg_(Marktrodach)",
+   "https://www.spiegel.de/politik/letzte-generation-protest-und-blockaden-ohne-kleber-in-berlin-muenchen-a-b6a1eadc-5aa9-43ff-b2d5-b5d3217cd59f",
+   "https://www.spiegel.de/reise/staedte/muenchen-hier-ist-es-im-sommer-am-chilligsten-a-81eb27d1-3641-4b8b-b253-bf75f5e8a72d",
+   "https://www.spiegel.de/politik/deutschland/news-feindbild-gruene-auf-dem-gillamoos-volksfest-haushaltswoche-im-bundestag-iaa-in-muenchen-a-f8bec70f-0a79-4f38-981e-c3a3c81a9982",
+   "https://www.spiegel.de/geschichte/berlin-in-den-achtzigern-a-949399.html"
+  ],
+  "scores": [
+   0.5101799,
+   0.48996773,
+   0.45900398,
+   0.42706275,
+   0.42205253
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "Kreuzberg ist ein Stadtteil von München.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://de.wikipedia.org/wiki/Kreuzberg_(Marktrodach)",
+  "n_results": 5,
+  "result_urls": [
+   "https://de.wikipedia.org/wiki/Kreuzberg_(Marktrodach)",
+   "https://www.spiegel.de/politik/letzte-generation-protest-und-blockaden-ohne-kleber-in-berlin-muenchen-a-b6a1eadc-5aa9-43ff-b2d5-b5d3217cd59f",
+   "https://www.spiegel.de/reise/staedte/muenchen-hier-ist-es-im-sommer-am-chilligsten-a-81eb27d1-3641-4b8b-b253-bf75f5e8a72d",
+   "https://www.spiegel.de/politik/deutschland/news-feindbild-gruene-auf-dem-gillamoos-volksfest-haushaltswoche-im-bundestag-iaa-in-muenchen-a-f8bec70f-0a79-4f38-981e-c3a3c81a9982",
+   "https://www.spiegel.de/geschichte/berlin-in-den-achtzigern-a-949399.html"
+  ],
+  "scores": [
+   0.5101799,
+   0.48996773,
+   0.45900398,
+   0.42706275,
+   0.42205253
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "Der Fernsehturm am Alexanderplatz wurde 1969 eröffnet.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://www.zeit.de/news/2019-10/03/besucher-feiern-den-berliner-fernsehturm",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.zeit.de/news/2019-10/03/besucher-feiern-den-berliner-fernsehturm",
+   "https://www.tagesschau.de/inland/regional/berlin/rbb-eroeffnung-3-oktober-1969-100.html",
+   "https://de.wikipedia.org/wiki/Berliner_Fernsehturm",
+   "https://www.berlin.de/ost-west-ost-kulturbahnhoefe/history-walk/artikel.1558558.php",
+   "https://www.tagesschau.de/kultur/berlin-fernsehturm-wahrzeichen-100.html"
+  ],
+  "scores": [
+   0.9057319,
+   0.8997663,
+   0.8941352,
+   0.89302075,
+   0.890761
+  ]
+ },
+ {
+  "config": "D_restrict",
+  "claim": "Der Fernsehturm am Alexanderplatz wurde 1969 eröffnet.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://www.zeit.de/news/2019-10/03/besucher-feiern-den-berliner-fernsehturm",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.zeit.de/news/2019-10/03/besucher-feiern-den-berliner-fernsehturm",
+   "https://www.tagesschau.de/inland/regional/berlin/rbb-eroeffnung-3-oktober-1969-100.html",
+   "https://de.wikipedia.org/wiki/Berliner_Fernsehturm",
+   "https://www.berlin.de/ost-west-ost-kulturbahnhoefe/history-walk/artikel.1558558.php",
+   "https://www.tagesschau.de/kultur/berlin-fernsehturm-wahrzeichen-100.html"
+  ],
+  "scores": [
+   0.9057319,
+   0.8997663,
+   0.8941352,
+   0.89302075,
+   0.890761
+  ]
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "The Berlin TV Tower is 368 metres tall.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://simple.wikipedia.org/wiki/Fernsehturm",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/List_of_tallest_structures",
+   "https://simple.wikipedia.org/wiki/Fernsehturm",
+   "https://amp.dw.com/en/berlin-tv-tower-construction-began-50-years-ago/a-18626516",
+   "https://www.dw.com/en/berlin-tv-tower-construction-began-50-years-ago/a-18626516",
+   "https://en.wikipedia.org/wiki/Fernsehturm_Berlin"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "The Berlin TV Tower is 368 metres tall.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://simple.wikipedia.org/wiki/Fernsehturm",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/List_of_tallest_structures",
+   "https://simple.wikipedia.org/wiki/Fernsehturm",
+   "https://amp.dw.com/en/berlin-tv-tower-construction-began-50-years-ago/a-18626516",
+   "https://www.dw.com/en/berlin-tv-tower-construction-began-50-years-ago/a-18626516",
+   "https://en.wikipedia.org/wiki/Fernsehturm_Berlin"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "Python was first released in 1991.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://en.wikipedia.org/wiki/Python_(programming_language)",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://sco.wikipedia.org/wiki/Python_(programmin_leid)",
+   "https://en.wikipedia.org/wiki/Python_(programming_language)",
+   "https://en.wikipedia.org/wiki/Outline_of_the_Python_programming_language",
+   "https://simple.wikipedia.org/wiki/Python_(programming_language)",
+   "https://en.wikipedia.org/wiki/History_of_Python"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "Python was first released in 1991.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://en.wikipedia.org/wiki/Python_(programming_language)",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://sco.wikipedia.org/wiki/Python_(programmin_leid)",
+   "https://en.wikipedia.org/wiki/Python_(programming_language)",
+   "https://en.wikipedia.org/wiki/Outline_of_the_Python_programming_language",
+   "https://simple.wikipedia.org/wiki/Python_(programming_language)",
+   "https://en.wikipedia.org/wiki/History_of_Python"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "The first iPhone was released in 2007.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://apnews.com/today-in-history/june-29",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://apnews.com/today-in-history/june-29",
+   "https://www.britannica.com/topic/list-of-iPhone-models",
+   "https://www.bbc.co.uk/news/newsbeat-47056309",
+   "https://www.bbc.com/news/technology-66222296",
+   "https://www.bbc.com/news/technology-38552241"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "The first iPhone was released in 2007.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://apnews.com/today-in-history/june-29",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://apnews.com/today-in-history/june-29",
+   "https://www.britannica.com/topic/list-of-iPhone-models",
+   "https://www.bbc.co.uk/news/newsbeat-47056309",
+   "https://www.bbc.com/news/technology-66222296",
+   "https://www.bbc.com/news/technology-38552241"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "The Bitcoin whitepaper was published in 2008.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://en.wikipedia.org/wiki/Bitcoin",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://pmc.ncbi.nlm.nih.gov/articles/PMC8730302",
+   "https://op.europa.eu/publication/manifestation_identifier/PUB_QM0924368ENN",
+   "https://en.wikipedia.org/wiki/Bitcoin",
+   "https://www.theguardian.com/books/2019/jun/26/the-white-paper-satoshi-nakamoto-review",
+   "https://www.reuters.com/world/uk/self-proclaimed-bitcoin-inventor-did-not-invent-bitcoin-uk-judge-rules-2024-03-14"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "The Bitcoin whitepaper was published in 2008.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://www.binance.com/en/academy/articles/the-bitcoin-whitepaper-explained",
+  "tier": "open_web",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.binance.com/en/academy/articles/the-bitcoin-whitepaper-explained",
+   "https://www.coinbase.com/learn/crypto-basics/bitcoin-whitepaper-simplified-for-everyone",
+   "https://www.coindesk.com/markets/2025/11/01/satoshi-s-bitcoin-whitepaper-turns-17-from-cypherpunk-rebellion-to-wall-street-staple",
+   "https://bitflyer.com/en-us/s/glossary/bitcoin-whitepaper",
+   "https://finance.yahoo.com/news/bitcoin-white-paper-intentionally-published-114930284.html"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "Rust 1.0 was released in 2015.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://en.wikipedia.org/wiki/Rust_(programming_language)",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/Rust_(programming_language)",
+   "https://en.wikipedia.org/wiki/Rust_compiler",
+   "https://en.wikipedia.org/wiki/Outline_of_the_Rust_programming_language",
+   "https://en.wikipedia.org/wiki/Rust_(video_game)",
+   "https://en.wikipedia.org/wiki/History_of_programming_languages"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "Rust 1.0 was released in 2015.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://en.wikipedia.org/wiki/Rust_(programming_language)",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/Rust_(programming_language)",
+   "https://en.wikipedia.org/wiki/Rust_compiler",
+   "https://en.wikipedia.org/wiki/Outline_of_the_Rust_programming_language",
+   "https://en.wikipedia.org/wiki/Rust_(video_game)",
+   "https://en.wikipedia.org/wiki/History_of_programming_languages"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "The Elbphilharmonie concert hall is in Berlin.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://en.wikipedia.org/wiki/Elbphilharmonie",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/Elbphilharmonie",
+   "https://www.reuters.com/article/lifestyle/germans-cheer-new-landmark-as-hamburg-concert-hall-opens-idUSKBN14V1SG",
+   "https://www.dw.com/en/elbphilharmonie-hamburgs-iconic-concert-hall-turns-5/a-60379890",
+   "https://ru.wikipedia.org/wiki/commons:Category:Elbphilharmonie",
+   "https://www.dw.com/en/dailydrone-elbphilharmonie/video-46133729"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "The Elbphilharmonie concert hall is in Berlin.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://en.wikipedia.org/wiki/Elbphilharmonie",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://en.wikipedia.org/wiki/Elbphilharmonie",
+   "https://www.reuters.com/article/lifestyle/germans-cheer-new-landmark-as-hamburg-concert-hall-opens-idUSKBN14V1SG",
+   "https://www.dw.com/en/elbphilharmonie-hamburgs-iconic-concert-hall-turns-5/a-60379890",
+   "https://ru.wikipedia.org/wiki/commons:Category:Elbphilharmonie",
+   "https://www.dw.com/en/dailydrone-elbphilharmonie/video-46133729"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "Kreuzberg ist ein Stadtteil von München.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.spiegel.de/politik/letzte-generation-protest-und-blockaden-ohne-kleber-in-berlin-muenchen-a-b6a1eadc-5aa9-43ff-b2d5-b5d3217cd59f",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://de.wikipedia.org/wiki/Kreuzberg_(Marktrodach)",
+   "https://www.spiegel.de/politik/letzte-generation-protest-und-blockaden-ohne-kleber-in-berlin-muenchen-a-b6a1eadc-5aa9-43ff-b2d5-b5d3217cd59f",
+   "https://www.spiegel.de/reise/staedte/muenchen-hier-ist-es-im-sommer-am-chilligsten-a-81eb27d1-3641-4b8b-b253-bf75f5e8a72d",
+   "https://www.spiegel.de/politik/deutschland/news-feindbild-gruene-auf-dem-gillamoos-volksfest-haushaltswoche-im-bundestag-iaa-in-muenchen-a-f8bec70f-0a79-4f38-981e-c3a3c81a9982",
+   "https://www.spiegel.de/geschichte/berlin-in-den-achtzigern-a-949399.html"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "Kreuzberg ist ein Stadtteil von München.",
+  "expected": "contradicted",
+  "verdict": "contradicted",
+  "guard": null,
+  "source": "https://www.spiegel.de/politik/letzte-generation-protest-und-blockaden-ohne-kleber-in-berlin-muenchen-a-b6a1eadc-5aa9-43ff-b2d5-b5d3217cd59f",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://de.wikipedia.org/wiki/Kreuzberg_(Marktrodach)",
+   "https://www.spiegel.de/politik/letzte-generation-protest-und-blockaden-ohne-kleber-in-berlin-muenchen-a-b6a1eadc-5aa9-43ff-b2d5-b5d3217cd59f",
+   "https://www.spiegel.de/reise/staedte/muenchen-hier-ist-es-im-sommer-am-chilligsten-a-81eb27d1-3641-4b8b-b253-bf75f5e8a72d",
+   "https://www.spiegel.de/politik/deutschland/news-feindbild-gruene-auf-dem-gillamoos-volksfest-haushaltswoche-im-bundestag-iaa-in-muenchen-a-f8bec70f-0a79-4f38-981e-c3a3c81a9982",
+   "https://www.spiegel.de/geschichte/berlin-in-den-achtzigern-a-949399.html"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "Der Fernsehturm am Alexanderplatz wurde 1969 eröffnet.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://www.zeit.de/news/2019-10/03/besucher-feiern-den-berliner-fernsehturm",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.zeit.de/news/2019-10/03/besucher-feiern-den-berliner-fernsehturm",
+   "https://www.tagesschau.de/inland/regional/berlin/rbb-eroeffnung-3-oktober-1969-100.html",
+   "https://de.wikipedia.org/wiki/Berliner_Fernsehturm",
+   "https://www.berlin.de/ost-west-ost-kulturbahnhoefe/history-walk/artikel.1558558.php",
+   "https://www.tagesschau.de/kultur/berlin-fernsehturm-wahrzeichen-100.html"
+  ],
+  "scores": []
+ },
+ {
+  "config": "G_two_tier",
+  "claim": "Der Fernsehturm am Alexanderplatz wurde 1969 eröffnet.",
+  "expected": "supported",
+  "verdict": "supported",
+  "guard": null,
+  "source": "https://www.zeit.de/news/2019-10/03/besucher-feiern-den-berliner-fernsehturm",
+  "tier": "reference",
+  "n_results": 5,
+  "result_urls": [
+   "https://www.zeit.de/news/2019-10/03/besucher-feiern-den-berliner-fernsehturm",
+   "https://www.tagesschau.de/inland/regional/berlin/rbb-eroeffnung-3-oktober-1969-100.html",
+   "https://de.wikipedia.org/wiki/Berliner_Fernsehturm",
+   "https://www.berlin.de/ost-west-ost-kulturbahnhoefe/history-walk/artikel.1558558.php",
+   "https://www.tagesschau.de/kultur/berlin-fernsehturm-wahrzeichen-100.html"
+  ],
+  "scores": []
+ }
+]

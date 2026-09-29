@@ -1,0 +1,10 @@
+.env
+.env.*
+!.env.example
+.venv
+.netlify
+deck
+reviews
+tests
+PITCH.md
+PITCH-SCRIPT.md

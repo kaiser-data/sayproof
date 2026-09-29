@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sayproof</title>
+<style>
+/* Layout: one column, like a manuscript page; input on top, receipt below. Same tokens as the pitch deck. */
+:root {
+  --paper: #fbfcfd; --card: #ffffff; --ink: #16202e; --ink-soft: #4f5d70; --rule: #d5dce5;
+  --mark: #ffe45c; --accent: #2448c9;
+  --ok: #1f7a4d; --ok-bg: #e3f3ea; --bad: #b3261e; --bad-bg: #fbe6e4;
+  --old: #9a5b00; --old-bg: #fdf0d8; --unk: #56606d; --unk-bg: #eceff3;
+  --display: Charter, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: "SF Mono", ui-monospace, Menlo, Consolas, "Liberation Mono", monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --paper: #10151d; --card: #171e28; --ink: #e8edf3; --ink-soft: #a3afbf; --rule: #2c3644;
+  --mark: #6b5b00; --accent: #8fa8ff;
+  --ok: #7fd6a6; --ok-bg: #16362a; --bad: #ff9a90; --bad-bg: #3d1d1b;
+  --old: #f2c26b; --old-bg: #3a2c12; --unk: #b6c0cc; --unk-bg: #252d38; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --paper: #10151d; --card: #171e28; --ink: #e8edf3; --ink-soft: #a3afbf; --rule: #2c3644;
+  --mark: #6b5b00; --accent: #8fa8ff;
+  --ok: #7fd6a6; --ok-bg: #16362a; --bad: #ff9a90; --bad-bg: #3d1d1b;
+  --old: #f2c26b; --old-bg: #3a2c12; --unk: #b6c0cc; --unk-bg: #252d38; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.5 var(--body); }
+.wrap { max-width: 880px; margin: 0 auto; padding-inline: 16px; padding-block: 40px 64px; display: flex; flex-direction: column; gap: 28px; }
+header { display: flex; flex-direction: column; gap: 6px; }
+h1 { font: 700 clamp(40px, 7vw, 64px)/1 var(--display); margin: 0; letter-spacing: -.01em; }
+h1 sup { font: 700 .35em/1 var(--mono); color: var(--accent); }
+.tag { margin: 0; font-size: 19px; color: var(--ink-soft); }
+mark { background: linear-gradient(transparent 12%, var(--mark) 12%, var(--mark) 88%, transparent 88%); color: inherit; padding: 0 .1em; }
+label { font: 600 12px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+textarea { width: 100%; min-height: 170px; resize: vertical; padding: 14px 16px; border: 1.5px solid var(--ink); border-radius: 4px; background: var(--card); color: var(--ink); font: 18px/1.5 var(--display); }
+textarea:focus-visible, button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.controls { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+button { font: 600 15px/1 var(--body); padding: 12px 18px; border-radius: 4px; border: 1.5px solid var(--ink); background: var(--ink); color: var(--paper); cursor: pointer; }
+button.ghost { background: transparent; color: var(--ink); }
+button[disabled] { opacity: .55; cursor: progress; }
+.status { font: 500 13px/1.4 var(--mono); color: var(--ink-soft); }
+.status.err { color: var(--bad); }
+.form { display: flex; flex-direction: column; gap: 10px; }
+
+.receipt { border: 1.5px solid var(--ink); border-radius: 4px; background: var(--card); }
+.receipt-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 16px; padding: 10px 16px; border-bottom: 1.5px solid var(--ink); font: 500 13px/1.4 var(--mono); color: var(--ink-soft); }
+.row { display: grid; grid-template-columns: 1fr auto; gap: 6px 16px; padding: 14px 16px; border-bottom: 1px solid var(--rule); }
+.row:last-child { border-bottom: 0; }
+.claim { min-width: 0; font: 19px/1.35 var(--display); }
+.detail { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 6px; font-size: 14.5px; color: var(--ink-soft); min-width: 0; }
+.detail blockquote { margin: 0; padding-left: 12px; border-left: 2px solid var(--rule); font-style: italic; color: var(--ink); overflow-wrap: anywhere; }
+.detail a { color: var(--accent); overflow-wrap: anywhere; }
+.say { color: var(--ink); }
+.say b { font: 700 11px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-right: 6px; }
+.guard { font: 400 12px/1.4 var(--mono); }
+.tier { font: 500 12px/1.4 var(--mono); color: var(--old); }
+.pill { align-self: start; font: 700 12px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; padding: 6px 9px; border-radius: 3px; white-space: nowrap; }
+.pill.supported { color: var(--ok); background: var(--ok-bg); }
+.pill.contradicted { color: var(--bad); background: var(--bad-bg); }
+.pill.outdated { color: var(--old); background: var(--old-bg); }
+.pill.unverified { color: var(--unk); background: var(--unk-bg); }
+.empty { padding: 18px 16px; color: var(--ink-soft); }
+footer { font: 400 12.5px/1.5 var(--mono); color: var(--ink-soft); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Sayproof<sup>1</sup></h1>
+    <p class="tag">Fact-check your talk <mark>before your audience does</mark>.</p>
+  </header>
+
+  <form class="form" id="form">
+    <label for="text">Your talk (paste a transcript or type it)</label>
+    <textarea id="text" name="text" maxlength="3000">Pluto is our ninth planet. You can see the Great Wall of China from space with the naked eye. The Eiffel Tower grows by about 15 centimetres in summer. And our users tripled this year.</textarea>
+    <div class="controls">
+      <button type="submit" id="go">Check my talk</button>
+      <button type="button" class="ghost" id="clear">Clear</button>
+      <span class="status" id="status" role="status" aria-live="polite">The text above is an example rehearsal. Replace it with your own.</span>
+    </div>
+  </form>
+
+  <section id="out" aria-label="Checked claims"></section>
+
+  <footer>¹ Claims found by NVIDIA Nemotron on Nebius Token Factory, evidence from Tavily search. Every verdict except "can't verify" quotes its source. Reference sources (public bodies, science organisations, encyclopedias, major news outlets) are searched first; the open web only if they don't settle a claim.</footer>
+</div>
+
+<script>
+(function () {
+  var LABEL = { supported: "Supported", contradicted: "Contradicted", outdated: "Outdated", unverified: "Can't verify" };
+  var form = document.getElementById("form"), text = document.getElementById("text");
+  var go = document.getElementById("go"), status = document.getElementById("status"), out = document.getElementById("out");
+
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+
+  function render(r) {
+    out.textContent = "";
+    var box = el("div", "receipt");
+    var head = el("div", "receipt-head");
+    var c = r.counts;
+    head.appendChild(el("span", null, r.claims.length + " claims · " + r.seconds + " s · " + r.checked_on));
+    head.appendChild(el("span", null, [c.outdated + " outdated", c.contradicted + " contradicted", c.supported + " supported", c.unverified + " can't verify"].join(" · ")));
+    box.appendChild(head);
+    if (!r.claims.length) box.appendChild(el("div", "empty", "No checkable claims found. Opinions and greetings are skipped on purpose."));
+    r.claims.forEach(function (k) {
+      var row = el("div", "row");
+      row.appendChild(el("div", "claim", "“" + k.quote + "”"));
+      row.appendChild(el("span", "pill " + k.verdict, LABEL[k.verdict] || k.verdict));
+      var d = el("div", "detail");
+      if (k.explanation) d.appendChild(el("span", null, k.explanation));
+      if (k.evidence_quote) d.appendChild(el("blockquote", null, k.evidence_quote));
+      if (k.source && k.source.url) {
+        var a = el("a", null, k.source.title); a.href = k.source.url; a.target = "_blank"; a.rel = "noopener noreferrer";
+        var s = el("span", null, "Source: "); s.appendChild(a); d.appendChild(s);
+        if (k.source_tier === "open_web") d.appendChild(el("span", "tier", "Found on the open web, outside the reference sources. Check this source yourself."));
+      }
+      if (k.suggestion) { var say = el("span", "say"); say.appendChild(el("b", null, "Say instead")); say.appendChild(document.createTextNode(k.suggestion)); d.appendChild(say); }
+      if (k.guard_note) d.appendChild(el("span", "guard", "Guard: " + k.guard_note));
+      row.appendChild(d);
+      box.appendChild(row);
+    });
+    out.appendChild(box);
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var t = text.value.trim();
+    if (t.length < 10) { status.className = "status err"; status.textContent = "Write at least one full sentence to check."; return; }
+    go.disabled = true; status.className = "status"; status.textContent = "Finding claims and searching the web. This takes 10 to 40 seconds.";
+    fetch("/api/check", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text: t }) })
+      .then(function (res) {
+        return res.json().catch(function () { return {}; }).then(function (j) {
+          if (!res.ok) throw new Error(j.detail || (res.status === 504 ? "The check took too long. Try a shorter text." : "The check failed (error " + res.status + "). Try again."));
+          return j;
+        });
+      }, function () {
+        throw new Error(location.hostname === "localhost" || location.hostname === "127.0.0.1"
+          ? "The local Sayproof server isn't running. Start it, or use sayproof.vercel.app."
+          : "Couldn't reach the Sayproof server. Check your connection and try again.");
+      })
+      .then(function (r) { render(r); status.textContent = "Done. Checked with " + r.model + "."; })
+      .catch(function (err) { status.className = "status err"; status.textContent = String(err.message || err); })
+      .finally(function () { go.disabled = false; });
+  });
+  document.getElementById("clear").addEventListener("click", function () { text.value = ""; out.textContent = ""; text.focus(); status.className = "status"; status.textContent = ""; });
+})();
+</script>
+</body>
+</html>
