@@ -59,6 +59,8 @@ python-dotenv==1.2.3
     # via
     #   sayproof
     #   uvicorn
+python-multipart==0.0.32
+    # via sayproof
 pyyaml==6.0.3
     # via uvicorn
 regex==2026.9.29

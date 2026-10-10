@@ -20,4 +20,4 @@ def test_check_rejects_long_text_before_calling_apis():
 def test_index_and_health_served():
     c = TestClient(app)
     assert "Sayproof" in c.get("/").text
-    assert set(c.get("/api/health").json()) == {"nebius_key", "tavily_key", "model"}
+    assert set(c.get("/api/health").json()) == {"nebius_key", "tavily_key", "model", "speech"}
