@@ -1,0 +1,71 @@
+{
+ "about": "Claims with a known verdict as of October 2026, for scripts/eval_verdicts.py. 'also_ok' lists verdicts that are defensible but not the one Sayproof should give (scored as lenient only).",
+ "claims": [
+  {"claim": "The Eiffel Tower grows by about 15 centimetres in summer.", "expected": "unverified", "also_ok": ["supported", "contradicted"], "category": "contested", "lang": "English", "note": "toureiffel.paris says the tower grows a few millimetres; 15 cm is the curve the top traces in the sun. Popular sources say 15 cm."},
+  {"claim": "Mount Everest is 8,849 metres tall.", "expected": "supported", "category": "fact", "lang": "English"},
+  {"claim": "Water boils at 100 degrees Celsius at sea level.", "expected": "supported", "category": "fact", "lang": "English"},
+  {"claim": "Light travels at about 300,000 kilometres per second in a vacuum.", "expected": "supported", "category": "fact", "lang": "English"},
+  {"claim": "Neil Armstrong walked on the Moon in 1969.", "expected": "supported", "category": "fact", "lang": "English"},
+  {"claim": "An adult human skeleton has 206 bones.", "expected": "supported", "category": "fact", "lang": "English"},
+  {"claim": "Python was first released in 1991.", "expected": "supported", "category": "fact", "lang": "English"},
+  {"claim": "Octopuses have three hearts.", "expected": "supported", "category": "fact", "lang": "English"},
+  {"claim": "Venus is the hottest planet in our solar system.", "expected": "supported", "category": "fact", "lang": "English"},
+  {"claim": "The first iPhone was released in 2007.", "expected": "supported", "category": "fact", "lang": "English"},
+  {"claim": "Bananas are berries in the botanical sense.", "expected": "supported", "category": "fact", "lang": "English"},
+
+  {"claim": "You can see the Great Wall of China from space with the naked eye.", "expected": "contradicted", "category": "myth", "lang": "English"},
+  {"claim": "Humans only use 10 percent of their brains.", "expected": "contradicted", "category": "myth", "lang": "English"},
+  {"claim": "Goldfish have a memory span of only three seconds.", "expected": "contradicted", "category": "myth", "lang": "English"},
+  {"claim": "Lightning never strikes the same place twice.", "expected": "contradicted", "category": "myth", "lang": "English"},
+  {"claim": "Bulls are enraged by the colour red.", "expected": "contradicted", "category": "myth", "lang": "English"},
+  {"claim": "Albert Einstein failed maths at school.", "expected": "contradicted", "category": "myth", "lang": "English"},
+  {"claim": "Viking warriors wore horned helmets in battle.", "expected": "contradicted", "category": "myth", "lang": "English"},
+  {"claim": "Bats are blind.", "expected": "contradicted", "category": "myth", "lang": "English"},
+  {"claim": "Napoleon Bonaparte was much shorter than the average Frenchman of his time.", "expected": "contradicted", "category": "myth", "lang": "English"},
+
+  {"claim": "The Berlin Wall fell in 1991.", "expected": "contradicted", "category": "wrong number", "lang": "English"},
+  {"claim": "Mount Everest is 9,500 metres tall.", "expected": "contradicted", "category": "wrong number", "lang": "English"},
+  {"claim": "The Titanic sank in 1915.", "expected": "contradicted", "category": "wrong number", "lang": "English"},
+  {"claim": "The Moon is about 38,000 kilometres away from Earth.", "expected": "contradicted", "category": "wrong number", "lang": "English"},
+  {"claim": "Python was first released in 2001.", "expected": "contradicted", "category": "wrong number", "lang": "English"},
+  {"claim": "The Elbphilharmonie concert hall is in Berlin.", "expected": "contradicted", "category": "wrong number", "lang": "English"},
+
+  {"claim": "Pluto is our ninth planet.", "expected": "outdated", "also_ok": ["contradicted"], "category": "outdated", "lang": "English"},
+  {"claim": "China is the most populous country in the world.", "expected": "outdated", "also_ok": ["contradicted"], "category": "outdated", "lang": "English"},
+  {"claim": "Croatia's currency is the kuna.", "expected": "outdated", "also_ok": ["contradicted"], "category": "outdated", "lang": "English"},
+  {"claim": "Jack Dorsey is the CEO of Twitter.", "expected": "outdated", "also_ok": ["contradicted"], "category": "outdated", "lang": "English"},
+  {"claim": "The United Kingdom is a member of the European Union.", "expected": "outdated", "also_ok": ["contradicted"], "category": "outdated", "lang": "English"},
+  {"claim": "Germany generates part of its electricity in nuclear power plants.", "expected": "outdated", "also_ok": ["contradicted"], "category": "outdated", "lang": "English"},
+  {"claim": "Queen Elizabeth II is the British head of state.", "expected": "outdated", "also_ok": ["contradicted"], "category": "outdated", "lang": "English"},
+
+  {"claim": "In 2005, Pluto was still counted as the ninth planet.", "expected": "supported", "category": "dated", "lang": "English"},
+  {"claim": "In 2010, Angela Merkel was Chancellor of Germany.", "expected": "supported", "category": "dated", "lang": "English"},
+  {"claim": "In 2015, Croatia paid with the kuna.", "expected": "supported", "category": "dated", "lang": "English"},
+
+  {"claim": "Our users tripled last quarter.", "expected": "unverified", "category": "private", "lang": "English"},
+  {"claim": "My grandmother ran the first bakery in our village.", "expected": "unverified", "category": "private", "lang": "English"},
+  {"claim": "Our app cut onboarding time by 40 percent for our customers.", "expected": "unverified", "category": "private", "lang": "English"},
+  {"claim": "I have given this talk to more than 500 students.", "expected": "unverified", "category": "private", "lang": "English"},
+  {"claim": "Our startup was founded in a garage in Hamburg in 2021.", "expected": "unverified", "category": "private", "lang": "English"},
+
+  {"claim": "Die Berliner Mauer fiel im November 1989.", "expected": "supported", "category": "German", "lang": "German"},
+  {"claim": "Der Fernsehturm am Alexanderplatz wurde 1969 eröffnet.", "expected": "supported", "category": "German", "lang": "German"},
+  {"claim": "Die Zugspitze ist mit 2.962 Metern der höchste Berg Deutschlands.", "expected": "supported", "category": "German", "lang": "German"},
+  {"claim": "Kreuzberg ist ein Stadtteil von München.", "expected": "contradicted", "category": "German", "lang": "German"},
+  {"claim": "Der Mensch nutzt nur zehn Prozent seines Gehirns.", "expected": "contradicted", "category": "German", "lang": "German"},
+  {"claim": "Die Elbe mündet in die Ostsee.", "expected": "contradicted", "category": "German", "lang": "German"},
+  {"claim": "Pluto ist der neunte Planet unseres Sonnensystems.", "expected": "outdated", "also_ok": ["contradicted"], "category": "German", "lang": "German"},
+  {"claim": "Angela Merkel ist Bundeskanzlerin.", "expected": "outdated", "also_ok": ["contradicted"], "category": "German", "lang": "German"},
+  {"claim": "Unser Umsatz hat sich im letzten Jahr verdoppelt.", "expected": "unverified", "category": "German", "lang": "German"}
+ ],
+ "talks": [
+  {"text": "Hi everyone, thanks for coming, I'm really excited to be here. Since our launch in spring, our users tripled. And here is a fun fact: the Great Wall of China is visible from space. I think that's amazing. Next year we will reach a million users.",
+   "must_find": ["tripled", "Great Wall"], "must_skip": ["excited", "amazing", "million"]},
+  {"text": "Good morning. My presentation is about our solar system. Pluto is our ninth planet. Venus is the hottest planet, even though Mercury is closer to the Sun. Personally, Saturn is my favourite. Light from the Sun needs about eight minutes to reach the Earth.",
+   "must_find": ["Pluto", "Venus", "eight minutes"], "must_skip": ["favourite", "Good morning"]},
+  {"text": "Hallo zusammen. Ich finde Berlin die schönste Stadt der Welt. Die Berliner Mauer fiel 1991. Der Fernsehturm ist 368 Meter hoch. Unser Verein hat heute 120 Mitglieder. Ich hoffe, ihr habt Spaß.",
+   "must_find": ["Mauer", "Fernsehturm", "120"], "must_skip": ["schönste", "Spaß"]},
+  {"text": "So, quick update on the product. Our churn dropped by half after the redesign, according to our own dashboard. Studies show that people only use ten percent of their brains, so we kept the screens simple. I believe this is the best onboarding on the market. We'll ship the new version in March.",
+   "must_find": ["churn", "ten percent"], "must_skip": ["best onboarding", "March"]}
+ ]
+}

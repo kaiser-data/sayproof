@@ -26,6 +26,8 @@ transcript ─► Nemotron (Nebius Token Factory): extract checkable claims
            ─► quote guard (one retry, then downgrade) ─► receipt
 ```
 
+Claims about the speaker's own company, team or results ("our users tripled") are flagged at extraction and never searched: no public source can back them, and a search only finds someone else's numbers. The receipt marks them "can't verify" and asks for the speaker's own data.
+
 - **Model:** `nvidia/nemotron-3-super-120b-a12b` on Nebius Token Factory (OpenAI-compatible API), configurable with `NEMOTRON_MODEL`
 - **Search:** Tavily, `search_depth="advanced"`, 5 results per claim, in two tiers:
   1. **Reference sources only** (`include_domains_mode="restrict"`): public bodies (NASA, NIH, EU…), science organisations, encyclopedias, major news outlets. List in `sayproof/clients.py`.
@@ -64,7 +66,18 @@ uv run pytest
   | **Two tiers (current)** | **36/36** | **35/36** |
 
   The set is small, and a single setting varied by up to 2 verdicts between runs, so the verdict column cannot separate the settings. The source column can. Tavily does not accept whole-TLD patterns such as `*.gov` or `*.edu` in `include_domains`, so the reference list names organisations.
-- **Not built yet:** speech input. Parakeet is not in the Nebius Token Factory model list, so speech to text will run on Nebius AI Cloud or locally.
+- **Verdict quality** (`scripts/eval_verdicts.py`, set in `eval/verdict_set.json`): 50 claims with a known answer (true facts, myths, wrong numbers, outdated present-tense claims, dated claims, claims about the speaker, 9 in German), each through the production path 3 times. Run on 2026-10-10:
+
+  | | Result |
+  |---|---|
+  | Verdicts that match the label, or a defensible alternative (contradicted for outdated) | 150/150 |
+  | Exact match with the label | 146/150 |
+  | Confidently wrong (a wrong verdict other than "can't verify") | 0/150 |
+  | Same verdict in all 3 runs | 49/50 claims |
+  | Checkable claims found in 4 sample talks, opinions and plans skipped | 30/30 found, 0/27 opinions kept |
+
+  Model noise only: Tavily results are cached across the 3 runs (`--fresh` searches every run). Two earlier runs of the same set had 2 and 3 confidently wrong verdicts out of 150. Those runs led to the speaker-claim rule above, after "Unser Umsatz hat sich verdoppelt" was "supported" with another company's revenue, and to a rule that rounded numbers (8,849 m for 8,848.86 m) match. One of them also called "bulls are enraged by red" supported, citing a study on cattle in red light. 50 claims is still a small set.
+- **Speech input** runs locally with NVIDIA Parakeet (`uv sync --extra speech`, Apple Silicon). Parakeet is not in the Nebius Token Factory model list, so the hosted demo is text only.
 - Verdicts can vary between runs, because search results and model output change. For a claim that is judged borderline, re-run it or check the source yourself.
 
 ## Pitch

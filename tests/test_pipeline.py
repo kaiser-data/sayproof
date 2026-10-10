@@ -120,3 +120,24 @@ def test_reference_tier_first_open_web_only_as_fallback():
     tiers = {c["quote"]: c["source_tier"] for c in r["claims"]}
     assert tiers == {"Pluto is our ninth planet": "reference", "we tripled": "open_web"}
     assert ("Pluto", "open_web") not in search.calls  # no fallback search when the reference tier settled it
+
+
+class SpeakerClaimModel:
+    async def complete(self, system, user):
+        assert "extract" in system, "a claim about the speaker must not reach the verdict step"
+        return json.dumps({"language": "German", "claims": [
+            {"claim": "Unser Umsatz hat sich verdoppelt.", "quote": "Unser Umsatz hat sich verdoppelt",
+             "search_query": "Umsatz verdoppelt", "about_speaker": True}]})
+
+
+class NoSearch:
+    async def search(self, query, tier="open_web"):
+        raise AssertionError("a claim about the speaker must not be searched")
+
+
+def test_claim_about_speaker_is_unverified_without_search():
+    r = asyncio.run(check_transcript(SpeakerClaimModel(), NoSearch(), "Unser Umsatz hat sich verdoppelt.",
+                                     today=dt.date(2026, 10, 10)))
+    [c] = r["claims"]
+    assert c["verdict"] == "unverified" and c["source"] is None and c["position"] == 0
+    assert c["explanation"].startswith("Das betrifft dich")

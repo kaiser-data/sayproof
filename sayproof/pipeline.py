@@ -92,6 +92,8 @@ EXTRACT_SYSTEM = """You extract checkable factual claims from the transcript of 
 A checkable claim states something about the world that a web search could confirm or refute:
 numbers, dates, records, scientific or historical facts, who did what.
 Skip opinions, predictions, jokes, greetings, and statements about the speaker's feelings.
+Do include claims about the speaker's own company, product, team or results when they state a fact or a number
+("our users tripled", "unser Umsatz hat sich verdoppelt"): the speaker needs to know these are unbacked.
 Keep dates, units, qualifiers and attribution exactly as spoken ("in 2019", "about", "according to").
 Write "claim" in the language of the transcript. "quote" must be copied from the transcript unchanged.
 "search_query" may be in English if that finds better sources.
@@ -99,7 +101,9 @@ Reply with JSON only:
 {"language": "<language of the transcript in English, e.g. German>",
  "claims": [{"claim": "<the claim as a standalone sentence>",
              "quote": "<the exact words from the transcript>",
-             "search_query": "<a short web search query to check it>"}]}
+             "search_query": "<a short web search query to check it>",
+             "about_speaker": <true if the claim is about the speaker or their own company, product, team or
+                               family; false for facts about the world, even when phrased "our planet">}]}
 Return at most %d claims, in the order they appear. Return {"claims": []} if there are none.""" % MAX_CLAIMS
 
 VERDICT_SYSTEM = """You check one claim from a talk against web search results. Today is {today}.
@@ -119,6 +123,12 @@ Rules:
 - Judge the claim in the sense a typical audience would understand it. Example: "the Berlin Wall fell" means the
   opening of the border in 1989, not the end of its demolition. Related but different events are not a
   disagreement between sources.
+- A number rounded the way people speak matches a more precise source: "8,849 metres" matches 8,848.86 m.
+  Only call a number contradicted if it is wrong beyond normal rounding.
+- A claim about the speaker's own organisation, product, team or life ("we", "our", "my", "unser", "ich")
+  is about that speaker, not about whoever a source describes. A source about another company, person or
+  product does not support or contradict it: the verdict is "unverified", unless the source clearly names
+  the same entity as the claim.
 - For any verdict except "unverified", copy one sentence word for word from a source's content into
   "evidence_quote" and give that source's id. If you cannot, the verdict must be "unverified".
 - The evidence sentence does not have to repeat the claim; it must clearly establish it. Example: "Pluto was
@@ -129,6 +139,10 @@ Rules:
 Reply with JSON only:
 {{"verdict": "...", "explanation": "<one short sentence>", "source_id": <int or null>,
   "evidence_quote": "<exact sentence or null>", "suggestion": "<sentence or null>"}}"""
+
+
+ABOUT_SPEAKER_EN = "This is about you or your own organisation, so no public source can confirm it. Have your own data ready."
+ABOUT_SPEAKER_DE = "Das betrifft dich oder deine eigene Organisation, keine öffentliche Quelle kann es belegen. Halte eigene Zahlen bereit."
 
 
 # ---------- pipeline steps ----------
@@ -148,6 +162,7 @@ async def extract_claims(model: ChatModel, transcript: str) -> list[dict[str, st
                 "quote": str(c.get("quote") or claim).strip(),
                 "search_query": str(c.get("search_query") or claim).strip(),
                 "language": language,
+                "about_speaker": c.get("about_speaker") is True,
             })
     return out
 
@@ -190,6 +205,10 @@ async def judge_claim(model: ChatModel, search: SearchEngine, c: dict[str, str],
                       today: dt.date) -> ClaimResult:
     """Judge against reference sources first; fall back to the open web only if that leaves it unverified."""
     position = find_position(c["quote"], transcript)
+    if c.get("about_speaker"):
+        # No public source can back "our users tripled"; searching only finds someone else's numbers.
+        note = ABOUT_SPEAKER_DE if c.get("language", "").lower() == "german" else ABOUT_SPEAKER_EN
+        return ClaimResult(c["claim"], c["quote"], position, "unverified", note)
     result = None
     for tier in TIERS:
         result = await judge_in_tier(model, search, c, position, today, tier)
