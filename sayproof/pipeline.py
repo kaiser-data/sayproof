@@ -82,8 +82,12 @@ def quote_in(quote: str, text: str) -> bool:
 
 
 def find_position(quote: str, transcript: str) -> int | None:
-    idx = transcript.lower().find((quote or "").lower().strip())
-    return idx if idx >= 0 else None
+    """Where the quote starts in the transcript, matching words only: speech transcripts punctuate freely."""
+    words = re.findall(r"\w+", quote or "")
+    if not words:
+        return None
+    match = re.search(r"\W+".join(map(re.escape, words)), transcript, re.IGNORECASE)
+    return match.start() if match else None
 
 
 # ---------- prompts ----------

@@ -4,7 +4,7 @@ import asyncio
 import datetime as dt
 import json
 
-from sayproof.pipeline import Source, apply_guard, check_transcript, parse_json_object, quote_in
+from sayproof.pipeline import Source, apply_guard, check_transcript, find_position, parse_json_object, quote_in
 
 SRC = [Source(1, "IAU", "https://example.org/iau",
               "In 2006 the IAU reclassified Pluto as a dwarf planet. It is no longer counted among the planets.")]
@@ -141,3 +141,11 @@ def test_claim_about_speaker_is_unverified_without_search():
     [c] = r["claims"]
     assert c["verdict"] == "unverified" and c["source"] is None and c["position"] == 0
     assert c["explanation"].startswith("Das betrifft dich")
+
+
+def test_find_position_ignores_punctuation_and_case():
+    transcript = "Good morning. Octopuses have three hearts, and since our launch, our users tripled."
+    assert find_position("Octopuses have three hearts.", transcript) == transcript.index("Octopuses")
+    assert find_position("since our launch our users tripled", transcript) == transcript.index("since")
+    assert find_position("Bats are blind", transcript) is None
+    assert find_position("", transcript) is None
