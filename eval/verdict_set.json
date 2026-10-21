@@ -1,7 +1,7 @@
 {
  "about": "Claims with a known verdict as of October 2026, for scripts/eval_verdicts.py. 'also_ok' lists verdicts that are defensible but not the one Sayproof should give (scored as lenient only).",
  "claims": [
-  {"claim": "The Eiffel Tower grows by about 15 centimetres in summer.", "expected": "unverified", "also_ok": ["supported", "contradicted"], "category": "contested", "lang": "English", "note": "toureiffel.paris says the tower grows a few millimetres; 15 cm is the curve the top traces in the sun. Popular sources say 15 cm."},
+  {"claim": "The Eiffel Tower grows by about 15 centimetres in summer.", "expected": "unverified", "also_ok": ["supported", "contradicted"], "category": "contested", "lang": "English", "note": "toureiffel.paris says heat makes the tower a few millimetres taller; popular sources say 15 cm, and linear expansion (300 m, ~12e-6/K, ~35 K) gives roughly 12 cm. Sources disagree, so can't verify."},
   {"claim": "Mount Everest is 8,849 metres tall.", "expected": "supported", "category": "fact", "lang": "English"},
   {"claim": "Water boils at 100 degrees Celsius at sea level.", "expected": "supported", "category": "fact", "lang": "English"},
   {"claim": "Light travels at about 300,000 kilometres per second in a vacuum.", "expected": "supported", "category": "fact", "lang": "English"},
@@ -22,6 +22,11 @@
   {"claim": "Viking warriors wore horned helmets in battle.", "expected": "contradicted", "category": "myth", "lang": "English"},
   {"claim": "Bats are blind.", "expected": "contradicted", "category": "myth", "lang": "English"},
   {"claim": "Napoleon Bonaparte was much shorter than the average Frenchman of his time.", "expected": "contradicted", "category": "myth", "lang": "English"},
+  {"claim": "Humans now have a shorter attention span than a goldfish, about eight seconds.", "expected": "contradicted", "also_ok": ["unverified"], "category": "presentation", "lang": "English", "note": "The 8-second figure traces to a Statistic Brain page cited by a 2015 Microsoft Canada report; no study behind it."},
+  {"claim": "People fear public speaking more than death.", "expected": "unverified", "also_ok": ["contradicted"], "category": "presentation", "lang": "English", "note": "Contested: the 1973 Bruskin survey listed public speaking above death; the 2025 Chapman Survey of American Fears ranks it 46th. Never supported as a general fact."},
+  {"claim": "93 percent of communication is nonverbal.", "expected": "contradicted", "also_ok": ["unverified"], "category": "presentation", "lang": "English", "note": "Overgeneralises Mehrabian's 1967 experiments on single words conveying feelings; Mehrabian rejects the generalisation."},
+  {"claim": "People remember 10 percent of what they read and 90 percent of what they do.", "expected": "contradicted", "also_ok": ["unverified"], "category": "presentation", "lang": "English", "note": "The 'learning pyramid' numbers have no research basis."},
+  {"claim": "Students learn better when teaching matches their preferred learning style.", "expected": "contradicted", "also_ok": ["unverified"], "category": "presentation", "lang": "English", "note": "The meshing hypothesis has not held up in controlled studies (Pashler et al., 2008)."},
 
   {"claim": "The Berlin Wall fell in 1991.", "expected": "contradicted", "category": "wrong number", "lang": "English"},
   {"claim": "Mount Everest is 9,500 metres tall.", "expected": "contradicted", "category": "wrong number", "lang": "English"},

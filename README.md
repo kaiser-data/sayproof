@@ -66,17 +66,19 @@ uv run pytest
   | **Two tiers (current)** | **36/36** | **35/36** |
 
   The set is small, and a single setting varied by up to 2 verdicts between runs, so the verdict column cannot separate the settings. The source column can. Tavily does not accept whole-TLD patterns such as `*.gov` or `*.edu` in `include_domains`, so the reference list names organisations.
-- **Verdict quality** (`scripts/eval_verdicts.py`, set in `eval/verdict_set.json`): 50 claims with a known answer (true facts, myths, wrong numbers, outdated present-tense claims, dated claims, claims about the speaker, 9 in German), each through the production path 3 times. Run on 2026-10-10:
+- **Verdict quality** (`scripts/eval_verdicts.py`, set in `eval/verdict_set.json`): 55 claims with a known answer (true facts, myths, presentation myths, wrong numbers, outdated present-tense claims, dated claims, claims about the speaker, 9 in German), each through the production path 3 times. Run on 2026-10-21:
 
   | | Result |
   |---|---|
-  | Verdicts that match the label, or a defensible alternative (contradicted for outdated) | 150/150 |
-  | Exact match with the label | 146/150 |
-  | Confidently wrong (a wrong verdict other than "can't verify") | 0/150 |
-  | Same verdict in all 3 runs | 49/50 claims |
+  | Verdicts that match the label, or a defensible alternative (contradicted for outdated) | 160/165 |
+  | Exact match with the label | 156/165 |
+  | Confidently wrong (a wrong verdict other than "can't verify") | 3/165 |
+  | Same verdict in all 3 runs | 52/55 claims |
   | Checkable claims found in 4 sample talks, opinions and plans skipped | 30/30 found, 0/27 opinions kept |
 
   Model noise only: Tavily results are cached across the 3 runs (`--fresh` searches every run). Two earlier runs of the same set had 2 and 3 confidently wrong verdicts out of 150. Those runs led to the speaker-claim rule above, after "Unser Umsatz hat sich verdoppelt" was "supported" with another company's revenue, and to a rule that rounded numbers (8,849 m for 8,848.86 m) match. One of them also called "bulls are enraged by red" supported, citing a study on cattle in red light. 50 claims is still a small set.
+
+  The 5 presentation myths (goldfish attention span, fear of public speaking vs. death, 93% nonverbal, the learning pyramid, learning styles) were added after live tests found reputable pages repeating them as fact. Before the rule that a statistic repeated in passing does not confirm it, they were confidently wrong in 6 of 15 runs with fresh search; after it, in 1 of 15. All 3 confidently wrong verdicts in the table come from them: the goldfish figure once, quoted from a CDC training page, and "people fear public speaking more than death" twice, which is genuinely contested (a 1973 survey ranked it above death, the 2025 Chapman survey ranks it 46th). The other 50 claims had 0 confidently wrong verdicts.
 - **Speech input** runs locally with NVIDIA Parakeet (`uv sync --extra speech`, Apple Silicon). Parakeet is not in the Nebius Token Factory model list, so the hosted demo is text only.
 - Verdicts can vary between runs, because search results and model output change. For a claim that is judged borderline, re-run it or check the source yourself.
 

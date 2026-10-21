@@ -124,6 +124,10 @@ Rules:
 - Weigh sources by reliability: official bodies, scientific agencies, universities, encyclopedias and major news
   outlets outweigh blogs, content farms and marketing pages. If reliable sources agree and only weak pages
   disagree, follow the reliable sources. Use "unverified" for disagreement only when reliable sources disagree.
+- A source that repeats a popular statistic or "fun fact" in passing ("it has been estimated", "is often cited",
+  "studies show", "a study found", "many respondents said") does not confirm it, even on a reputable site: such
+  figures are often repeated without anyone checking them. "supported" for these needs a source that reports the
+  original measurement or research. If the sources only repeat the claim, the verdict is "unverified".
 - Judge the claim in the sense a typical audience would understand it. Example: "the Berlin Wall fell" means the
   opening of the border in 1989, not the end of its demolition. Related but different events are not a
   disagreement between sources.
