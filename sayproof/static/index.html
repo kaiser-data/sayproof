@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Sayproof</title>
+<link rel="icon" href="data:,">
 <style>
 /* Layout: one column, like a manuscript page; input on top, receipt below. Same tokens as the pitch deck. */
 :root {
@@ -47,6 +48,7 @@ button[disabled] { opacity: .55; cursor: progress; }
 
 .receipt { border: 1.5px solid var(--ink); border-radius: 4px; background: var(--card); }
 .receipt-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 16px; padding: 10px 16px; border-bottom: 1.5px solid var(--ink); font: 500 13px/1.4 var(--mono); color: var(--ink-soft); }
+.verdict-line { flex-basis: 100%; font: 700 20px/1.3 var(--display); color: var(--ink); }
 .row { display: grid; grid-template-columns: 1fr auto; gap: 6px 16px; padding: 14px 16px; border-bottom: 1px solid var(--rule); }
 .row:last-child { border-bottom: 0; }
 .claim { min-width: 0; font: 19px/1.35 var(--display); }
@@ -62,6 +64,9 @@ button[disabled] { opacity: .55; cursor: progress; }
 .pill.contradicted { color: var(--bad); background: var(--bad-bg); }
 .pill.outdated { color: var(--old); background: var(--old-bg); }
 .pill.unverified { color: var(--unk); background: var(--unk-bg); }
+.pill.pending { color: var(--ink-soft); background: transparent; border: 1px dashed var(--rule); animation: pulse 1.2s ease-in-out infinite; }
+.row.pending .claim { color: var(--ink-soft); }
+@media (prefers-reduced-motion: reduce) { .pill.pending { animation: none; } }
 .empty { padding: 18px 16px; color: var(--ink-soft); }
 .speech { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; padding: 14px 16px; border: 1.5px dashed var(--rule); border-radius: 4px; }
 .speech .or { font: 500 13px/1 var(--mono); color: var(--ink-soft); }
@@ -97,7 +102,7 @@ footer { font: 400 12.5px/1.5 var(--mono); color: var(--ink-soft); }
     <label for="text">Your talk (paste a transcript or type it)</label>
     <textarea id="text" name="text" maxlength="3000">Pluto is our ninth planet. You can see the Great Wall of China from space with the naked eye. Octopuses have three hearts. And our users tripled this year.</textarea>
     <div class="controls">
-      <button type="submit" id="go">Check my talk</button>
+      <button type="submit" id="go" title="Ctrl+Enter or ⌘+Enter">Check my talk</button>
       <button type="button" class="ghost" id="clear">Clear</button>
       <span class="status" id="status" role="status" aria-live="polite">The text above is an example rehearsal. Replace it with your own.</span>
     </div>
@@ -116,41 +121,61 @@ footer { font: 400 12.5px/1.5 var(--mono); color: var(--ink-soft); }
 
   function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
 
+  function head(r) {
+    var h = el("div", "receipt-head"), c = r.counts;
+    if (c && r.claims.length) {
+      var fix = c.contradicted + c.outdated;
+      h.appendChild(el("strong", "verdict-line", fix ? "Fix " + fix + (fix === 1 ? " claim" : " claims") + " before you give this talk."
+        : c.unverified ? "Nothing wrong found. Have your own data ready for the claims marked can't verify." : "Every claim checks out."));
+    }
+    h.appendChild(el("span", null, (r.audio_seconds != null ? fmt(r.audio_seconds) + " talk · " : "") + r.claims.length + " claims · " + (r.seconds != null ? r.seconds + " s · " : "") + r.checked_on));
+    h.appendChild(el("span", null, c ? [c.outdated + " outdated", c.contradicted + " contradicted", c.supported + " supported", c.unverified + " can't verify"].join(" · ") : "checking…"));
+    return h;
+  }
+
   function render(r) {
     out.textContent = "";
     var box = el("div", "receipt");
-    var head = el("div", "receipt-head");
-    var c = r.counts;
-    head.appendChild(el("span", null, (r.audio_seconds != null ? fmt(r.audio_seconds) + " talk · " : "") + r.claims.length + " claims · " + r.seconds + " s · " + r.checked_on));
-    head.appendChild(el("span", null, [c.outdated + " outdated", c.contradicted + " contradicted", c.supported + " supported", c.unverified + " can't verify"].join(" · ")));
-    box.appendChild(head);
+    box.appendChild(head(r));
     if (!r.claims.length) box.appendChild(el("div", "empty", "No checkable claims found. Opinions and greetings are skipped on purpose."));
-    r.claims.forEach(function (k) {
-      var row = el("div", "row");
-      var line = el("div", "claimline");
-      if (k.time != null) {
-        var ts = el("button", "ts", fmt(k.time)); ts.type = "button"; ts.title = "Play this moment";
-        if (!player.src) ts.disabled = true;
-        ts.addEventListener("click", function () { player.hidden = false; player.currentTime = Math.max(k.time - 0.3, 0); player.play().catch(function () {}); });
-        line.appendChild(ts);
-      }
-      line.appendChild(el("div", "claim", "“" + k.quote + "”"));
-      row.appendChild(line);
-      row.appendChild(el("span", "pill " + k.verdict, LABEL[k.verdict] || k.verdict));
-      var d = el("div", "detail");
-      if (k.explanation) d.appendChild(el("span", null, k.explanation));
-      if (k.evidence_quote) d.appendChild(el("blockquote", null, k.evidence_quote));
-      if (k.source && k.source.url) {
-        var a = el("a", null, k.source.title); a.href = k.source.url; a.target = "_blank"; a.rel = "noopener noreferrer";
-        var s = el("span", null, "Source: "); s.appendChild(a); d.appendChild(s);
-        if (k.source_tier === "open_web") d.appendChild(el("span", "tier", "Found on the open web, outside the reference sources. Check this source yourself."));
-      }
-      if (k.suggestion) { var say = el("span", "say"); say.appendChild(el("b", null, "Say instead")); say.appendChild(document.createTextNode(k.suggestion)); d.appendChild(say); }
-      if (k.guard_note) d.appendChild(el("span", "guard", "Guard: " + k.guard_note));
-      row.appendChild(d);
-      box.appendChild(row);
-    });
+    r.claims.forEach(function (k) { box.appendChild(k.verdict ? row(k) : pendingRow(k)); });
     out.appendChild(box);
+    return box;
+  }
+
+  function pendingRow(k) {
+    var r = el("div", "row pending"), line = el("div", "claimline");
+    line.appendChild(el("div", "claim", "“" + k.quote + "”"));
+    r.appendChild(line);
+    r.appendChild(el("span", "pill pending", "Checking…"));
+    return r;
+  }
+
+  function row(k) {
+    var r = el("div", "row");
+    var line = el("div", "claimline");
+    if (k.time != null) {
+      var ts = el("button", "ts", fmt(k.time)); ts.type = "button"; ts.title = "Play this moment";
+      if (!player.src) ts.disabled = true;
+      ts.addEventListener("click", function () { player.hidden = false; player.currentTime = Math.max(k.time - 0.3, 0); player.play().catch(function () {}); });
+      line.appendChild(ts);
+    }
+    line.appendChild(el("div", "claim", "“" + k.quote + "”"));
+    r.appendChild(line);
+    r.appendChild(el("span", "pill " + k.verdict, LABEL[k.verdict] || k.verdict));
+    var d = el("div", "detail");
+    // What to do first, then why, then the proof.
+    if (k.suggestion) { var say = el("span", "say"); say.appendChild(el("b", null, "Say instead")); say.appendChild(document.createTextNode(k.suggestion)); d.appendChild(say); }
+    if (k.explanation) d.appendChild(el("span", null, k.explanation));
+    if (k.evidence_quote) d.appendChild(el("blockquote", null, k.evidence_quote));
+    if (k.source && k.source.url) {
+      var a = el("a", null, k.source.title); a.href = k.source.url; a.target = "_blank"; a.rel = "noopener noreferrer";
+      var s = el("span", null, "Source: "); s.appendChild(a); d.appendChild(s);
+      if (k.source_tier === "open_web") d.appendChild(el("span", "tier", "Found on the open web, outside the reference sources. Check this source yourself."));
+    }
+    if (k.guard_note) d.appendChild(el("span", "guard", "Guard: " + k.guard_note));
+    r.appendChild(d);
+    return r;
   }
 
   function fmt(sec) { sec = Math.round(sec); return Math.floor(sec / 60) + ":" + String(sec % 60).padStart(2, "0"); }
@@ -167,6 +192,24 @@ footer { font: 400 12.5px/1.5 var(--mono); color: var(--ink-soft); }
         : "Couldn't reach the Sayproof server. Check your connection and try again.");
     });
   }
+  // Reads newline-delimited JSON as it arrives and hands each event to onEvent.
+  function stream(url, opts, onEvent) {
+    return fetch(url, opts).then(function (res) {
+      if (!res.ok) return res.json().catch(function () { return {}; }).then(function (j) {
+        throw new Error(j.detail || (res.status === 504 ? "The check took too long. Try a shorter text." : "The check failed (error " + res.status + "). Try again."));
+      });
+      var reader = res.body.getReader(), decoder = new TextDecoder(), buf = "";
+      function pump() {
+        return reader.read().then(function (chunk) {
+          buf += decoder.decode(chunk.value || new Uint8Array(), { stream: !chunk.done });
+          var lines = buf.split("\n"); buf = chunk.done ? "" : lines.pop();
+          lines.forEach(function (l) { if (l.trim()) onEvent(JSON.parse(l)); });
+          if (!chunk.done) return pump();
+        });
+      }
+      return pump();
+    }, function () { return call(url, opts); });
+  }
   function busy(on, msg) { go.disabled = on; rec.disabled = on && !recording; file.disabled = on; status.className = "status"; if (msg) status.textContent = msg; }
   function fail(err) { status.className = "status err"; status.textContent = String(err.message || err); }
 
@@ -175,10 +218,35 @@ footer { font: 400 12.5px/1.5 var(--mono); color: var(--ink-soft); }
     var t = text.value.trim();
     if (t.length < 10) { fail("Write at least one full sentence to check."); return; }
     player.hidden = true; player.removeAttribute("src");
-    busy(true, "Finding claims and searching the web. This takes 10 to 40 seconds.");
-    call("/api/check", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text: t }) })
-      .then(function (r) { render(r); status.textContent = "Done. Checked with " + r.model + "."; })
-      .catch(fail).finally(function () { busy(false); });
+    var started = Date.now(), receipt = null, box = null, done = 0, phase = "Finding the claims in your talk";
+    function tick() { status.textContent = phase + (receipt && receipt.seconds != null ? "." : " · " + Math.round((Date.now() - started) / 1000) + " s"); }
+    busy(true); tick();
+    var clock = setInterval(tick, 1000);
+    function onEvent(e) {
+      if (e.event === "error") throw new Error(e.detail);
+      if (e.event === "claims") {
+        receipt = { claims: e.claims, checked_on: e.checked_on };
+        box = render(receipt);
+        phase = e.claims.length ? "Searching sources for " + e.claims.length + " claims" : "No claims to check";
+      } else if (e.event === "result") {
+        receipt.claims[e.index] = e.claim;
+        box.replaceChild(row(e.claim), box.children[e.index + 1]);
+        done += 1; phase = "Checked " + done + " of " + receipt.claims.length + " claims";
+      } else if (e.event === "done") {
+        receipt.counts = e.counts; receipt.seconds = e.seconds;
+        box.replaceChild(head(receipt), box.firstChild);
+        phase = "Done in " + e.seconds + " s. Checked with " + e.model;
+      }
+      tick();
+    }
+    stream("/api/check-stream", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text: t }) }, onEvent)
+      .then(function () { if (!receipt || receipt.seconds == null) throw new Error("The check stopped before it finished. Try again."); })
+      .catch(fail).finally(function () { clearInterval(clock); busy(false); });
+  });
+
+  // Ctrl/Cmd+Enter in the text box runs the check.
+  text.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" && (e.metaKey || e.ctrlKey) && !go.disabled) { e.preventDefault(); form.requestSubmit(); }
   });
 
   // ---- speech input (only when the local server has Parakeet) ----

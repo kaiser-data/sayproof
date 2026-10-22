@@ -29,12 +29,15 @@ class Nemotron:
         self.client = AsyncOpenAI(api_key=require("NEBIUS_API_KEY"),
                                   base_url=os.environ.get("NEBIUS_BASE_URL", DEFAULT_BASE_URL))
 
-    async def complete(self, system: str, user: str) -> str:
+    async def complete(self, system: str, user: str, think: bool = True) -> str:
         resp = await self.client.chat.completions.create(
             model=self.model,
             messages=[{"role": "system", "content": system}, {"role": "user", "content": user}],
             temperature=0.1,
             max_tokens=4096,
+            # Every prompt asks for one JSON object; constrained decoding stops replies like {"a": b"}.
+            response_format={"type": "json_object"},
+            extra_body=None if think else {"chat_template_kwargs": {"enable_thinking": False}},
         )
         return resp.choices[0].message.content or ""
 

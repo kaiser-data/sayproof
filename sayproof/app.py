@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import os
 import tempfile
 import time
@@ -10,12 +11,12 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 from fastapi import FastAPI, File, HTTPException, Request, UploadFile
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, StreamingResponse
 from pydantic import BaseModel, Field
 
 from . import speech
 from .clients import MissingKey, Nemotron, Tavily
-from .pipeline import check_transcript
+from .pipeline import check_transcript, stream_transcript
 
 load_dotenv()
 STATIC = Path(__file__).parent / "static"
@@ -85,14 +86,18 @@ def health() -> dict:
     }
 
 
-async def run_check(text: str, request: Request) -> dict:
+def open_clients(request: Request) -> tuple[Nemotron, Tavily]:
     blocked = limiter.check(client_ip(request))
     if blocked:
         raise HTTPException(status_code=429, detail=blocked)
     try:
-        model, search = Nemotron(), Tavily()
+        return Nemotron(), Tavily()
     except MissingKey as exc:
         raise HTTPException(status_code=503, detail=str(exc))
+
+
+async def run_check(text: str, request: Request) -> dict:
+    model, search = open_clients(request)
     started = time.perf_counter()
     try:
         receipt = await check_transcript(model, search, text)
@@ -106,6 +111,25 @@ async def run_check(text: str, request: Request) -> dict:
 @app.post("/api/check")
 async def check(req: CheckRequest, request: Request) -> dict:
     return await run_check(req.text, request)
+
+
+@app.post("/api/check-stream")
+async def check_stream(req: CheckRequest, request: Request) -> StreamingResponse:
+    """Same check as /api/check, as NDJSON: the claims first, then each verdict the moment it is ready."""
+    model, search = open_clients(request)
+
+    async def lines():
+        started = time.perf_counter()
+        try:
+            async for event in stream_transcript(model, search, req.text):
+                if event["event"] == "done":
+                    event.update(seconds=round(time.perf_counter() - started, 1), model=model.model)
+                yield json.dumps(event, ensure_ascii=False) + "\n"
+        except ValueError as exc:
+            yield json.dumps({"event": "error", "detail": f"The model reply could not be read: {exc}"}) + "\n"
+
+    return StreamingResponse(lines(), media_type="application/x-ndjson",
+                             headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"})
 
 
 @app.post("/api/check-audio")

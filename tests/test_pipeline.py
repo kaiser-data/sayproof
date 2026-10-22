@@ -4,7 +4,8 @@ import asyncio
 import datetime as dt
 import json
 
-from sayproof.pipeline import Source, apply_guard, check_transcript, find_position, parse_json_object, quote_in
+from sayproof.pipeline import (Source, apply_guard, check_transcript, find_position, parse_json_object, quote_in,
+                               stream_transcript)
 
 SRC = [Source(1, "IAU", "https://example.org/iau",
               "In 2006 the IAU reclassified Pluto as a dwarf planet. It is no longer counted among the planets.")]
@@ -39,7 +40,7 @@ def test_guard_downgrades_missing_source_and_unknown_verdict():
 
 
 class FakeModel:
-    async def complete(self, system, user):
+    async def complete(self, system, user, think=True):
         if "extract" in system:
             return json.dumps({"claims": [
                 {"claim": "Our users tripled this year.", "quote": "our users tripled", "search_query": "users tripled"},
@@ -65,13 +66,24 @@ def test_check_transcript_orders_by_position_and_guards():
     assert r["counts"] == {"supported": 0, "contradicted": 0, "outdated": 1, "unverified": 1}
 
 
+def test_stream_sends_claims_first_then_each_verdict_then_counts():
+    async def collect():
+        return [e async for e in stream_transcript(FakeModel(), FakeSearch(), "Pluto is our ninth planet. And our users tripled.",
+                                                   today=dt.date(2026, 9, 29))]
+    events = asyncio.run(collect())
+    assert [e["event"] for e in events] == ["claims", "result", "result", "done"]
+    assert [c["quote"] for c in events[0]["claims"]] == ["Pluto is our ninth planet", "our users tripled"]
+    assert {e["index"]: e["claim"]["verdict"] for e in events[1:3]} == {0: "outdated", 1: "unverified"}
+    assert events[-1]["counts"]["outdated"] == 1
+
+
 class ParaphrasingModel:
     """Paraphrases the quote on the first verdict call, copies it exactly on the retry."""
 
     def __init__(self):
         self.verdict_calls = 0
 
-    async def complete(self, system, user):
+    async def complete(self, system, user, think=True):
         if "extract" in system:
             return json.dumps({"language": "German", "claims": [
                 {"claim": "Pluto ist der neunte Planet.", "quote": "Pluto ist unser neunter Planet", "search_query": "Pluto"}]})
@@ -104,7 +116,7 @@ class TieredSearch:
 
 
 class TierModel:
-    async def complete(self, system, user):
+    async def complete(self, system, user, think=True):
         if "extract" in system:
             return json.dumps({"language": "English", "claims": [
                 {"claim": "Pluto is the ninth planet.", "quote": "Pluto is our ninth planet", "search_query": "Pluto"},
@@ -123,7 +135,7 @@ def test_reference_tier_first_open_web_only_as_fallback():
 
 
 class SpeakerClaimModel:
-    async def complete(self, system, user):
+    async def complete(self, system, user, think=True):
         assert "extract" in system, "a claim about the speaker must not reach the verdict step"
         return json.dumps({"language": "German", "claims": [
             {"claim": "Unser Umsatz hat sich verdoppelt.", "quote": "Unser Umsatz hat sich verdoppelt",

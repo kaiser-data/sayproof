@@ -55,7 +55,7 @@ uv run pytest
 
 ## Status
 
-- Text input works end to end against the live Nemotron and Tavily APIs (about 9–15 s for 3–4 claims).
+- Text input works end to end against the live Nemotron and Tavily APIs. Results stream in: the claims appear after the extraction step (about 4–6 s), each verdict as soon as it is ready; the 4-claim example finishes in about 5–13 s.
 - The public demo limits each visitor to 6 checks per 10 minutes, 300 checks a day, 3000 characters and 8 claims per check. The limits are in memory per server instance, so they slow abuse down but are not a hard cap. Set `LIMIT_PER_IP`, `LIMIT_WINDOW_S` and `LIMIT_PER_DAY` to change them.
 - Source filtering was chosen by measurement (`scripts/eval_search.py`, results in `eval/`). On 18 claims with a known answer (10 well-known myths, 8 less-known facts in English and German), each judged twice:
 
@@ -70,15 +70,18 @@ uv run pytest
 
   | | Result |
   |---|---|
-  | Verdicts that match the label, or a defensible alternative (contradicted for outdated) | 160/165 |
-  | Exact match with the label | 156/165 |
-  | Confidently wrong (a wrong verdict other than "can't verify") | 3/165 |
-  | Same verdict in all 3 runs | 52/55 claims |
+  | Verdicts that match the label, or a defensible alternative (contradicted for outdated) | 165/165 |
+  | Exact match with the label | 158/165 |
+  | Confidently wrong (a wrong verdict other than "can't verify") | 0/165 |
+  | Same verdict in all 3 runs | 51/55 claims |
+  | Median seconds per claim | 4.0 |
   | Checkable claims found in 4 sample talks, opinions and plans skipped | 30/30 found, 0/27 opinions kept |
 
   Model noise only: Tavily results are cached across the 3 runs (`--fresh` searches every run). Two earlier runs of the same set had 2 and 3 confidently wrong verdicts out of 150. Those runs led to the speaker-claim rule above, after "Unser Umsatz hat sich verdoppelt" was "supported" with another company's revenue, and to a rule that rounded numbers (8,849 m for 8,848.86 m) match. One of them also called "bulls are enraged by red" supported, citing a study on cattle in red light. 50 claims is still a small set.
 
-  The 5 presentation myths (goldfish attention span, fear of public speaking vs. death, 93% nonverbal, the learning pyramid, learning styles) were added after live tests found reputable pages repeating them as fact. Before the rule that a statistic repeated in passing does not confirm it, they were confidently wrong in 6 of 15 runs with fresh search; after it, in 1 of 15. All 3 confidently wrong verdicts in the table come from them: the goldfish figure once, quoted from a CDC training page, and "people fear public speaking more than death" twice, which is genuinely contested (a 1973 survey ranked it above death, the 2025 Chapman survey ranks it 46th). The other 50 claims had 0 confidently wrong verdicts.
+  The 5 presentation myths (goldfish attention span, fear of public speaking vs. death, 93% nonverbal, the learning pyramid, learning styles) were added after live tests found reputable pages repeating them as fact. Before the rule that a statistic repeated in passing does not confirm it, they were confidently wrong in 6 of 15 runs with fresh search; after it, in 1 of 15. "People fear public speaking more than death" is labelled can't verify: it is genuinely contested (a 1973 survey ranked it above death, the 2025 Chapman survey ranks it 46th).
+
+  Speed: Nemotron reasons only while extracting claims. With reasoning on for verdicts too, the same set took a median 11.1 s per claim with 156/165 exact and 3/165 confidently wrong. Without reasoning, the model called debunked myths "outdated" ("people used to believe it"), so an "outdated" verdict gets a second, reasoned look; the Great Wall claim went from 5/8 outdated to 8/8 contradicted, while Pluto stayed outdated 8/8. Replies use JSON mode, which stopped malformed JSON from turning verdicts into "can't verify".
 - **Speech input** runs locally with NVIDIA Parakeet (`uv sync --extra speech`, Apple Silicon). Parakeet is not in the Nebius Token Factory model list, so the hosted demo is text only.
 - Verdicts can vary between runs, because search results and model output change. For a claim that is judged borderline, re-run it or check the source yourself.
 

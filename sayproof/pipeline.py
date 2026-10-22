@@ -14,16 +14,20 @@ import datetime as dt
 import json
 import re
 from dataclasses import asdict, dataclass, field
+from collections.abc import AsyncIterator
 from typing import Any, Protocol
 
 VERDICTS = ("supported", "contradicted", "outdated", "unverified")
 MAX_CLAIMS = 8
 SOURCES_PER_CLAIM = 5
+# Reasoning made each verdict about 2x slower without making it more accurate (scripts/eval_verdicts.py,
+# 2026-10-21). Extraction keeps it: without it, claims about the world were flagged as about the speaker.
+VERDICT_THINKING = False
 TIERS = ("reference", "open_web")
 
 
 class ChatModel(Protocol):
-    async def complete(self, system: str, user: str) -> str: ...
+    async def complete(self, system: str, user: str, think: bool = True) -> str: ...
 
 
 class SearchEngine(Protocol):
@@ -117,7 +121,9 @@ Decide one verdict:
 - "outdated": the claim was true at some point but is no longer true today. Prefer this over "contradicted"
   whenever the sources show the claim used to be true ("was", "formerly", "until 2006", "no longer").
   Example: "Pluto is our ninth planet" is outdated, not contradicted. Only use it for claims stated in the
-  present tense; a claim that names its own date ("in 2019 ...") is judged for that date.
+  present tense; a claim that names its own date ("in 2019 ...") is judged for that date. "Outdated" means the
+  world changed (a reclassification, a new office holder, a new currency), not that people once believed it:
+  a claim that was never true, such as a myth or a wrong date or number, is "contradicted".
 - "unverified": the sources do not settle it, disagree, or the claim is about private data.
 Rules:
 - Base the verdict only on the sources below, not on memory.
@@ -127,7 +133,8 @@ Rules:
 - A source that repeats a popular statistic or "fun fact" in passing ("it has been estimated", "is often cited",
   "studies show", "a study found", "many respondents said") does not confirm it, even on a reputable site: such
   figures are often repeated without anyone checking them. "supported" for these needs a source that reports the
-  original measurement or research. If the sources only repeat the claim, the verdict is "unverified".
+  original measurement or research. If the sources only repeat the claim, the verdict is "unverified". If
+  reliable sources call the claim a myth, a misconception or pseudoscience, the verdict is "contradicted".
 - Judge the claim in the sense a typical audience would understand it. Example: "the Berlin Wall fell" means the
   opening of the border in 1989, not the end of its demolition. Related but different events are not a
   disagreement between sources.
@@ -245,14 +252,20 @@ async def judge_in_tier(model: ChatModel, search: SearchEngine, c: dict[str, str
     system = VERDICT_SYSTEM.format(today=today.isoformat(), language=c.get("language", "the language of the claim"))
     prompt = f"Claim: {c['claim']}\n\nSources:\n{listing}"
     try:
-        reply = await model.complete(system, prompt)
+        reply = await model.complete(system, prompt, think=VERDICT_THINKING)
         raw = parse_json_object(reply)
         verdict, src, quote, note = apply_guard(raw, sources)
+        if verdict == "outdated" and not VERDICT_THINKING:
+            # Without reasoning the model calls debunked myths "outdated" ("people used to believe it");
+            # with it, it does not. Outdated verdicts are rare, so only they pay for a second, reasoned look.
+            reply = await model.complete(system, prompt, think=True)
+            raw = parse_json_object(reply)
+            verdict, src, quote, note = apply_guard(raw, sources)
         if note:
             # One retry: models often paraphrase the quote. Ask for an exact copy, or an honest "unverified".
             retry = (f"{prompt}\n\nYour previous answer was:\n{reply}\n\nProblem: {note}. Copy one sentence "
                      "exactly as it appears in the source content, with the right source_id, or answer \"unverified\".")
-            raw = parse_json_object(await model.complete(system, retry))
+            raw = parse_json_object(await model.complete(system, retry, think=VERDICT_THINKING))
             verdict, src, quote, note = apply_guard(raw, sources)
     except Exception as exc:
         return unverified("The verdict step failed.", f"verdict error: {exc}", sources)
@@ -265,11 +278,39 @@ async def judge_in_tier(model: ChatModel, search: SearchEngine, c: dict[str, str
                        suggestion, note, tier, sources)
 
 
-async def check_transcript(model: ChatModel, search: SearchEngine, transcript: str,
-                           today: dt.date | None = None) -> dict[str, Any]:
+async def stream_transcript(model: ChatModel, search: SearchEngine, transcript: str,
+                            today: dt.date | None = None) -> AsyncIterator[dict[str, Any]]:
+    """Yield the claims as soon as they are found, then each verdict as it is ready, then the counts.
+
+    Events: {"event": "claims", "claims": [...]}, {"event": "result", "index": i, "claim": {...}} in finishing
+    order, {"event": "done", "counts": {...}}. Claims are in transcript order and "index" points into that list.
+    """
     today = today or dt.date.today()
     claims = await extract_claims(model, transcript)
-    results = await asyncio.gather(*(judge_claim(model, search, c, transcript, today) for c in claims))
-    results = sorted(results, key=lambda r: (r.position is None, r.position or 0))
-    counts = {v: sum(r.verdict == v for r in results) for v in VERDICTS}
-    return {"claims": [asdict(r) for r in results], "counts": counts, "checked_on": today.isoformat()}
+    at = {id(c): find_position(c["quote"], transcript) for c in claims}
+    claims.sort(key=lambda c: (at[id(c)] is None, at[id(c)] or 0))
+    yield {"event": "claims", "checked_on": today.isoformat(),
+           "claims": [{"claim": c["claim"], "quote": c["quote"], "position": at[id(c)]} for c in claims]}
+
+    async def judged(i: int, c: dict[str, str]) -> tuple[int, ClaimResult]:
+        return i, await judge_claim(model, search, c, transcript, today)
+
+    counts = dict.fromkeys(VERDICTS, 0)
+    for next_done in asyncio.as_completed([judged(i, c) for i, c in enumerate(claims)]):
+        i, result = await next_done
+        counts[result.verdict] += 1
+        yield {"event": "result", "index": i, "claim": asdict(result)}
+    yield {"event": "done", "counts": counts, "checked_on": today.isoformat()}
+
+
+async def check_transcript(model: ChatModel, search: SearchEngine, transcript: str,
+                           today: dt.date | None = None) -> dict[str, Any]:
+    results: list[dict[str, Any]] = []
+    async for event in stream_transcript(model, search, transcript, today):
+        if event["event"] == "claims":
+            results = [{}] * len(event["claims"])
+        elif event["event"] == "result":
+            results[event["index"]] = event["claim"]
+        else:
+            return {"claims": results, "counts": event["counts"], "checked_on": event["checked_on"]}
+    raise RuntimeError("stream ended without a done event")
