@@ -87,7 +87,7 @@ uv run pytest
 
 ## Pitch
 
-- Deck: https://sayproof-pitch.netlify.app (source in `deck/`)
+- Deck: https://sayproof-deck.netlify.app (source in `deck/`)
 
 ## License
 
