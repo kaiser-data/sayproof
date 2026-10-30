@@ -135,9 +135,9 @@ Decide one verdict:
   world changed (a reclassification, a new office holder, a new currency), not that people once believed it:
   a claim that was never true, such as a myth or a wrong date or number, is "contradicted".
 - "misleading": the facts or numbers are right, but the picture the audience takes away is wrong. Example:
-  "From the Big Bang to the edge of our universe it is 46 billion light-years" has the right number, but there
-  is no known edge: 46 billion light-years is how far we can see, and looking that far means looking back to
-  the Big Bang. Every point in the universe sees the same, like dots on a balloon.
+  "From the Big Bang to the edge of our universe it is 46 billion light-years" has the right number, but it is
+  the edge of the observable universe: how far light has reached us since the Big Bang, stretched by the
+  expansion of space. Whether the whole universe has an edge at all is unknown, so never claim it has none.
   Use it only when a typical audience would come away believing something specific and false, and name that
   false belief in "explanation". A true claim that is merely incomplete, simplified or carefully hedged ("results
   are mixed", "most", "about") is "supported", not "misleading".
@@ -198,17 +198,23 @@ Reply with JSON only:
 # The verdict model writes a first "say instead" line along with everything else; this step rewrites it for the ear.
 STAGE_LINE_SYSTEM = """You write the stage line: the words a speaker says in their talk instead of a false claim.
 The audience hears it once, so it must be at least as easy to follow as the claim it replaces.
-- One or two short sentences, at most 20 words. The point first, plain spoken words, the speaker's own voice.
+- One or two short sentences, at most 20 words (25 when a misleading claim needs its reason). The point first, plain spoken words, the speaker's own voice.
 - Refer to the source the way a speaker would, in a few words: "Britannica says ...", "NASA confirms ...",
   "Memory researchers found ...". Never a URL or a page title.
 - Keep correct numbers and percentages from the draft or the evidence, with exactly the meaning the evidence gives
   them: a radius is not a width "across", an estimate is not a count. Add no fact that is not in the evidence.
 - Don't repeat the false claim. Say what is true; name a myth as a myth in a few words.
+- For a misleading claim, the facts are right: keep the speaker's sentence and add only the word or short
+  phrase that makes the picture right, then say in a few words why, from the evidence or "Why it misleads". Never state as
+  fact what science doesn't know.
 - No hedging ("though", "depending on context"), no brackets, no dashes.
 - Write in {language}.
-Examples (false claim -> stage line):
+Examples (false or misleading claim -> stage line):
   "Goldfish have a three-second memory." -> "Researchers found goldfish remember things for months."
   "Einstein failed maths at school." -> "Einstein's school records show top marks in maths. That story is a myth."
+  "From the Big Bang to the edge of our universe it is 46 billion light-years." -> "To the edge of the
+  observable universe, it's 46 billion light-years. That's how far light has reached us since the Big Bang,
+  while space kept expanding."
 Reply with JSON only: {{"line": "<the stage line>"}}"""
 
 
@@ -289,18 +295,20 @@ def apply_guard(verdict: dict[str, Any], sources: list[Source]) -> tuple[str, So
 
 
 async def stage_line(model: ChatModel, c: dict[str, str], draft: str | None, src: Source | None,
-                     evidence: str | None) -> str | None:
+                     evidence: str | None, verdict: str = "contradicted", why: str = "") -> str | None:
     """Rewrite the draft "say instead" line so it is easy to say and names its source. Keeps the draft on failure."""
     if not draft or src is None:
         return draft
     system = STAGE_LINE_SYSTEM.format(language=c.get("language", "the language of the claim"))
-    prompt = (f"False claim: {c['quote']}\nDraft line: {draft}\nSource: {src.title} ({src.url})\n"
-              f"Evidence from the source: {evidence or ''}")
+    kind = "Misleading claim (facts right, picture wrong)" if verdict == "misleading" else "False claim"
+    prompt = (f"{kind}: {c['quote']}\nDraft line: {draft}\nSource: {src.title} ({src.url})\n"
+              f"Evidence from the source: {evidence or ''}" + (f"\nWhy it misleads: {why}" if why else ""))
     try:
         line = str(parse_json_object(await model.complete(system, prompt, think=False)).get("line") or "").strip()
     except Exception:
         return draft
-    return line if line and (len(line.split()) <= 20 or len(line.split()) < len(draft.split())) else draft
+    limit = 25 if verdict == "misleading" else 20
+    return line if line and (len(line.split()) <= limit or len(line.split()) < len(draft.split())) else draft
 
 
 async def judge_claim(model: ChatModel, search: SearchEngine, c: dict[str, str], transcript: str,
@@ -371,7 +379,8 @@ async def judge_in_tier(model: ChatModel, search: SearchEngine, c: dict[str, str
     if note:
         explanation = "Sayproof could not back a verdict with a quoted source."
     suggestion = raw.get("suggestion") if verdict in FIXABLE else None
-    suggestion = await stage_line(model, c, suggestion, src, quote)
+    suggestion = await stage_line(model, c, suggestion, src, quote, verdict,
+                            explanation if verdict == "misleading" else "")
     return ClaimResult(c["claim"], c["quote"], position, verdict, explanation, src, quote,
                        suggestion, note, tier, sources)
 
