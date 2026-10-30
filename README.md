@@ -61,8 +61,10 @@ facts usually get checked by the audience, live. Sayproof moves that check to th
 5. **NVIDIA Nemotron 3 Ultra**, reasoning, gives the verdict. It judges two things: are the facts right, and is the
    picture the audience takes away right? It sees the speaker's exact words, and must copy one sentence **word for word** from a source. Code checks that the
    sentence is really there. If it isn't, Nemotron gets one retry; then the verdict drops to "can't verify".
-6. **For a wrong or outdated claim**, a second short step rewrites the "say instead" line for the ear: one or two
-   short sentences, the source named the way a speaker would ("NASA confirms…").
+6. **For a wrong, outdated or misleading claim**, a second short step rewrites the "say instead" line for the ear:
+   one or two short sentences, the source named the way a speaker would ("NASA confirms…"). For a misleading claim it
+   keeps the speaker's sentence and adds only what's missing ("the *observable* universe"), and never states as fact
+   what science doesn't know.
 
 Results stream in: the claims appear after 4–6 s, each verdict as soon as it is ready.
 
@@ -281,8 +283,13 @@ Supabase: create a project and run `supabase/schema.sql` once. After changing de
 
 ## What's next
 
-Delete recordings after 30 days · measure the say-instead lines on a myth set, like the verdicts · check long talks
-in parts automatically · show the source date next to each verdict
+- **Fewer confident mistakes.** Three judge rules (a claim that denies a myth is supported when sources debunk the
+  myth; a source describing a belief doesn't confirm it; a true simplification isn't misleading) are on the
+  `judge-tuning` branch. Measured on a held-out half of TruthfulQA (`eval/truthfulqa_split.json`): 43 confidently
+  wrong against 51 and 48 for two runs of the current judge, but no gain on the half the rules were written from.
+  Not beyond run-to-run noise yet, so not merged; next: 3 runs per half.
+- Delete recordings after 30 days · measure the say-instead lines on a myth set, like the verdicts · check long
+  talks in parts automatically · show the source date next to each verdict
 
 ---
 
