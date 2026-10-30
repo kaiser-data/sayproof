@@ -10,6 +10,8 @@ from tavily import AsyncTavilyClient
 
 DEFAULT_BASE_URL = "https://api.tokenfactory.nebius.com/v1/"
 DEFAULT_MODEL = "nvidia/nemotron-3-super-120b-a12b"
+# Verdicts need judgement (fact vs. the picture it gives), so they go to the larger model, reasoning on.
+JUDGE_MODEL = "nvidia/Nemotron-3-Ultra-550b-a55b"
 
 
 class MissingKey(RuntimeError):
@@ -24,8 +26,8 @@ def require(name: str) -> str:
 
 
 class Nemotron:
-    def __init__(self) -> None:
-        self.model = os.environ.get("NEMOTRON_MODEL", DEFAULT_MODEL)
+    def __init__(self, model: str | None = None) -> None:
+        self.model = model or os.environ.get("NEMOTRON_MODEL", DEFAULT_MODEL)
         self.client = AsyncOpenAI(api_key=require("NEBIUS_API_KEY"),
                                   base_url=os.environ.get("NEBIUS_BASE_URL", DEFAULT_BASE_URL))
 

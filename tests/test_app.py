@@ -13,11 +13,11 @@ def test_rate_limiter_per_ip_window_and_daily_cap():
 
 
 def test_check_rejects_long_text_before_calling_apis():
-    r = TestClient(app).post("/api/check", json={"text": "x" * 3001})
+    r = TestClient(app).post("/api/check", json={"text": "x" * 30001})
     assert r.status_code == 422
 
 
 def test_index_and_health_served():
     c = TestClient(app)
     assert "Sayproof" in c.get("/").text
-    assert set(c.get("/api/health").json()) == {"nebius_key", "tavily_key", "model", "speech"}
+    assert set(c.get("/api/health").json()) == {"nebius_key", "tavily_key", "model", "speech", "asr", "storage"}

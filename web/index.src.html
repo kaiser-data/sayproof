@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sayproof</title>
+<meta name="description" content="Fact-check your talk before your audience does. Record or paste a rehearsal; every claim comes back with a verdict and a quoted source.">
+<meta name="theme-color" content="#f3f4f1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#11161d" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%2316202e'/%3E%3Crect x='6' y='13' width='20' height='8' fill='%23ffe45c'/%3E%3C/svg%3E">
+<!-- Build: web/build.py inlines the fonts and the app script into sayproof/static/index.html. Edit this file, not the output. -->
+<style>
+@font-face{font-family:"Newsreader";src:url({{FONT:fonts/newsreader-400.woff2}}) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Public Sans";src:url({{FONT:fonts/public-sans-400.woff2}}) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Public Sans";src:url({{FONT:fonts/public-sans-600.woff2}}) format("woff2");font-weight:600 700;font-display:swap}
+@font-face{font-family:"Plex Mono";src:url({{FONT:fonts/plex-mono-400.woff2}}) format("woff2");font-weight:400;font-display:swap}
+
+/* Spoken words are set in Newsreader, everything Sayproof says or does in Public Sans.
+   The highlighter yellow appears only where a claim is marked. */
+:root {
+  --ground: #f3f4f1; --surface: #ffffff; --band: #e8eae5; --ink: #16202e; --ink-soft: #4d5a6b; --rule: #d3d8d0;
+  --mark: #ffe45c; --accent: #2448c9; --on-accent: #ffffff; --head: #16202e; --on-head: #f3f4f1;
+  --ok: #1f7a4d; --ok-bg: #e3f3ea; --bad: #b3261e; --bad-bg: #fbe6e4;
+  --old: #8a5200; --old-bg: #fdf0d8; --mis: #7a3e9d; --mis-bg: #f1e6f8; --unk: #4f5966; --unk-bg: #e6e9ed;
+  --voice: "Newsreader", Charter, Georgia, serif;
+  --ui: "Public Sans", -apple-system, "Segoe UI", Roboto, sans-serif;
+  --data: "Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --ground: #11161d; --surface: #19202a; --band: #161c25; --ink: #e9edf2; --ink-soft: #a7b2c1; --rule: #2d3745;
+  --mark: #5c4f00; --accent: #9db2ff; --on-accent: #10151d; --head: #0b0f15; --on-head: #e9edf2;
+  --ok: #7fd6a6; --ok-bg: #16362a; --bad: #ff9a90; --bad-bg: #3d1d1b;
+  --old: #f2c26b; --old-bg: #3a2c12; --mis: #d7a6f2; --mis-bg: #33203f; --unk: #b6c0cc; --unk-bg: #252d38; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --ground: #11161d; --surface: #19202a; --band: #161c25; --ink: #e9edf2; --ink-soft: #a7b2c1; --rule: #2d3745;
+  --mark: #5c4f00; --accent: #9db2ff; --on-accent: #10151d; --head: #0b0f15; --on-head: #e9edf2;
+  --ok: #7fd6a6; --ok-bg: #16362a; --bad: #ff9a90; --bad-bg: #3d1d1b;
+  --old: #f2c26b; --old-bg: #3a2c12; --mis: #d7a6f2; --mis-bg: #33203f; --unk: #b6c0cc; --unk-bg: #252d38; color-scheme: dark; }
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; scroll-padding-top: 16px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--ground); color: var(--ink); font: 17px/1.55 var(--ui); -webkit-font-smoothing: antialiased; }
+::selection { background: var(--mark); color: var(--ink); }
+a { color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: 16px; }
+@media (min-width: 720px) { .wrap { padding-inline: 32px; } }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+h2 { font: 600 28px/1.2 var(--ui); letter-spacing: -.01em; }
+h3 { font: 600 18px/1.3 var(--ui); }
+p { margin: 0; }
+mark { background: linear-gradient(transparent 10%, var(--mark) 10%, var(--mark) 90%, transparent 90%); color: inherit; padding: 0 .08em; }
+
+/* ---- top bar ---- */
+.bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 20px; }
+.brand { display: flex; align-items: center; gap: 10px; font: 600 19px/1 var(--ui); color: var(--ink); text-decoration: none; }
+.brand svg { flex: none; }
+.bar nav { display: flex; gap: 20px; font-size: 15px; }
+.bar nav a { color: var(--ink-soft); text-decoration: none; padding-block: 12px; }
+.bar nav a:hover { color: var(--ink); }
+@media (max-width: 560px) { .bar nav a:not(:first-child) { display: none; } }
+
+/* ---- hero ---- */
+.hero { display: grid; gap: 40px; padding-block: 32px 72px; align-items: center; }
+@media (min-width: 960px) { .hero { grid-template-columns: 1fr 1fr; gap: 56px; padding-block: 56px 96px; } }
+.hero h1 { font: 400 clamp(44px, 6.4vw, 76px)/1.02 var(--voice); letter-spacing: -.02em; }
+.hero .lede { margin-top: 20px; max-width: 34em; font-size: 19px; color: var(--ink-soft); }
+.hero .ctas { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; }
+.hero .note { font-size: 15px; color: var(--ink-soft); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 22px; border-radius: 4px; border: 1.5px solid var(--ink); background: var(--ink); color: var(--ground); font: 600 16px/1 var(--ui); text-decoration: none; cursor: pointer; transition: transform .15s ease-out, background .15s; }
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: none; }
+
+/* The example is a till receipt: narrow, mono, torn edge. The highlighter sweeps the false claim, then the stamp lands. */
+.example { margin: 0; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+@media (min-width: 960px) { .example { align-items: flex-end; } }
+.slip { position: relative; width: min(100%, 380px); padding: 26px 24px 34px; background: var(--surface); color: var(--ink);
+  font: 400 13px/1.5 var(--data); font-variant-numeric: tabular-nums; transform: rotate(1.2deg);
+  box-shadow: 0 22px 44px -26px rgba(22, 32, 46, .45);
+  -webkit-mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / 14px 100%;
+          mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / 14px 100%; }
+.slip-top { display: flex; justify-content: space-between; color: var(--ink-soft); padding-bottom: 14px; border-bottom: 1px dashed var(--rule); }
+.slip-top b { color: var(--ink); font-weight: 400; letter-spacing: .14em; }
+.slip .claim { margin: 18px 0 0; font: 22px/1.35 var(--voice); }
+.slip .claim mark { background-size: 100% 100%; background-repeat: no-repeat; }
+.stamp { position: absolute; right: 18px; top: 92px; padding: 6px 10px; border: 2.5px solid var(--bad); border-radius: 4px; color: var(--bad);
+  font: 600 15px/1 var(--ui); letter-spacing: .12em; text-transform: uppercase; transform: rotate(-9deg); background: color-mix(in srgb, var(--surface) 70%, transparent); }
+.slip dl { margin: 22px 0 0; padding-top: 14px; border-top: 1px dashed var(--rule); display: grid; gap: 10px; }
+.slip dt { color: var(--ink-soft); }
+.slip dd { margin: 0; font: 16px/1.45 var(--voice); }
+.slip dd a { font: 400 13px/1.5 var(--data); }
+.slip-end { margin-top: 18px; padding-top: 12px; border-top: 1px dashed var(--rule); color: var(--ink-soft); display: flex; justify-content: space-between; }
+.example figcaption { width: min(100%, 380px); font-size: 14px; color: var(--ink-soft); }
+@media (prefers-reduced-motion: no-preference) {
+  .slip .claim mark { animation: sweep .9s cubic-bezier(.16, 1, .3, 1) .5s both; background-image: linear-gradient(transparent 10%, var(--mark) 10%, var(--mark) 90%, transparent 90%); background-color: transparent; }
+  .stamp { animation: stamp .45s cubic-bezier(.16, 1, .3, 1) 1.35s both; }
+}
+@keyframes sweep { from { background-size: 0 100%; } to { background-size: 100% 100%; } }
+@keyframes stamp { from { opacity: 0; transform: rotate(-9deg) scale(1.8); } to { opacity: 1; transform: rotate(-9deg) scale(1); } }
+
+/* ---- the tool ---- */
+.tool { background: var(--band); padding-block: 64px 80px; }
+.tool .wrap { display: flex; flex-direction: column; gap: 24px; max-width: 880px; }
+.tool .intro { display: flex; flex-direction: column; gap: 8px; }
+.tool .intro p { color: var(--ink-soft); max-width: 60ch; }
+label.field { font: 600 15px/1.3 var(--ui); color: var(--ink); }
+textarea { width: 100%; min-height: 190px; resize: vertical; padding: 16px 18px; border: 1.5px solid var(--ink-soft); border-radius: 4px; background: var(--surface); color: var(--ink); font: 19px/1.5 var(--voice); caret-color: var(--accent); }
+textarea:focus-visible { border-color: var(--accent); outline-offset: 1px; }
+.controls { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+button { font: 600 16px/1 var(--ui); min-height: 48px; padding: 0 22px; border-radius: 4px; border: 1.5px solid var(--ink); background: var(--ink); color: var(--ground); cursor: pointer; }
+button:hover { filter: brightness(1.12); }
+button.ghost { background: transparent; color: var(--ink); }
+button[disabled] { opacity: .55; cursor: progress; filter: none; }
+.status { font-size: 14.5px; line-height: 1.4; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.status.err { color: var(--bad); font-weight: 600; }
+.form { display: flex; flex-direction: column; gap: 10px; }
+
+.speech { display: flex; flex-direction: column; gap: 14px; padding: 18px 20px; border-radius: 4px; background: var(--surface); }
+.speech p { font-size: 15.5px; color: var(--ink-soft); max-width: 68ch; }
+.speech p b { color: var(--ink); }
+.speech-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+button.rec { background: var(--bad); border-color: var(--bad); color: #fff; display: inline-flex; align-items: center; gap: 8px; }
+button.rec.on { animation: pulse 1.2s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: .6; } }
+@media (prefers-reduced-motion: reduce) { button.rec.on, .pill.pending { animation: none; } }
+.file-label { display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; border-radius: 4px; border: 1.5px solid var(--ink); color: var(--ink); font: 600 16px/1 var(--ui); cursor: pointer; }
+.file-label:hover { background: var(--ground); }
+.file-label:focus-within { outline: 2px solid var(--accent); outline-offset: 3px; }
+.file-label input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.phone { display: flex; gap: 16px; align-items: center; padding-top: 14px; border-top: 1px solid var(--rule); }
+.phone svg { flex: none; width: 112px; height: 112px; border-radius: 4px; }
+.phone code { font: 400 13px/1.4 var(--data); color: var(--ink); overflow-wrap: anywhere; }
+.take { margin: 0; display: flex; flex-direction: column; gap: 6px; }
+.take figcaption { font-size: 14.5px; color: var(--ink-soft); }
+audio { width: 100%; }
+
+/* ---- receipt (used by the example and by every check) ---- */
+.receipt { border-radius: 4px; background: var(--surface); overflow: hidden; }
+.receipt-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; padding: 14px 18px; background: var(--head); color: var(--on-head); font: 400 13px/1.45 var(--data); font-variant-numeric: tabular-nums; }
+.receipt-head span { opacity: .8; }
+.verdict-line { flex-basis: 100%; font: 600 19px/1.3 var(--ui); }
+.row { display: grid; grid-template-columns: 1fr auto; gap: 8px 16px; padding: 16px 18px; border-top: 1px solid var(--rule); }
+.receipt-head + .row { border-top: 0; }
+.claimline { display: flex; gap: 12px; align-items: baseline; min-width: 0; }
+.claim { min-width: 0; font: 20px/1.4 var(--voice); }
+.detail { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 8px; font-size: 15px; color: var(--ink-soft); min-width: 0; }
+.detail blockquote { margin: 0; padding: 10px 14px; border-radius: 3px; background: var(--ground); font: 16px/1.45 var(--voice); color: var(--ink); overflow-wrap: anywhere; }
+.detail a { overflow-wrap: anywhere; }
+.say { color: var(--ink); }
+.say b { font-weight: 600; color: var(--accent); margin-right: 6px; }
+.guard { font-size: 13px; }
+.tier { font-size: 14px; color: var(--old); }
+.pill { align-self: start; font: 600 13px/1 var(--ui); padding: 7px 10px; border-radius: 3px; white-space: nowrap; }
+.pill.supported { color: var(--ok); background: var(--ok-bg); }
+.pill.contradicted { color: var(--bad); background: var(--bad-bg); }
+.pill.outdated { color: var(--old); background: var(--old-bg); }
+.pill.misleading { color: var(--mis); background: var(--mis-bg); }
+.pill.unverified { color: var(--unk); background: var(--unk-bg); }
+.pill.pending { color: var(--ink-soft); background: transparent; border: 1px dashed var(--rule); animation: pulse 1.2s ease-in-out infinite; }
+.row.pending .claim { color: var(--ink-soft); }
+.empty { padding: 18px; color: var(--ink-soft); }
+@media (max-width: 560px) { .row { grid-template-columns: 1fr; } .row .pill { order: -1; justify-self: start; } }
+.ts { min-height: 0; font: 400 14px/1.4 var(--data); color: var(--accent); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.ts[disabled] { color: var(--ink-soft); text-decoration: none; cursor: default; opacity: 1; }
+
+/* ---- explain ---- */
+.explain { padding-block: 80px; display: grid; gap: 56px; }
+@media (min-width: 960px) { .explain { grid-template-columns: 1fr 1fr; gap: 72px; } }
+.explain section { display: flex; flex-direction: column; gap: 20px; }
+.how { margin: 0; padding: 0; list-style: none; counter-reset: step; display: flex; flex-direction: column; gap: 20px; }
+.how li { counter-increment: step; display: grid; grid-template-columns: 36px 1fr; gap: 14px; max-width: 60ch; }
+.how li::before { content: counter(step); display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--ink); color: var(--ground); font: 600 15px/1 var(--ui); }
+.how li p { color: var(--ink-soft); }
+.how li b { color: var(--ink); }
+.verdicts { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 14px 18px; align-items: baseline; }
+.verdicts dt { margin: 0; }
+.verdicts dd { margin: 0; color: var(--ink-soft); max-width: 52ch; }
+.rule { color: var(--ink); max-width: 60ch; }
+@media (max-width: 480px) { .verdicts { grid-template-columns: 1fr; gap: 6px; } .verdicts dd { margin-bottom: 12px; } }
+
+.fine { background: var(--band); padding-block: 56px; }
+.fine .wrap { display: grid; gap: 40px; }
+@media (min-width: 960px) { .fine .wrap { grid-template-columns: 1fr 1fr; gap: 72px; } }
+.fine section { display: flex; flex-direction: column; gap: 10px; }
+.fine p { color: var(--ink-soft); max-width: 62ch; font-size: 16px; }
+
+footer { padding-block: 32px 48px; font-size: 14.5px; color: var(--ink-soft); }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+</style>
+</head>
+<body>
+<header class="wrap bar">
+  <a class="brand" href="#top" id="top" aria-label="Sayproof, back to top">
+    <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="4" fill="currentColor"/><rect x="6" y="13" width="20" height="8" fill="#ffe45c"/></svg>
+    Sayproof
+  </a>
+  <nav aria-label="Page">
+    <a href="#check">Check your talk</a>
+    <a href="#how">How it works</a>
+    <a href="https://github.com/kaiser-data/sayproof" target="_blank" rel="noopener noreferrer">GitHub</a>
+  </nav>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <div>
+      <h1>Fact-check your talk before your audience does.</h1>
+      <p class="lede">Rehearse out loud or paste your script. Sayproof finds every checkable claim, looks each one up, and tells you what to fix, with the sentence from the source that proves it.</p>
+      <div class="ctas">
+        <a class="btn" href="#check">Check my talk</a>
+        <span class="note">Free, no sign-up.</span>
+      </div>
+    </div>
+
+    <figure class="example" aria-label="Example result">
+      <div class="slip">
+        <div class="slip-top"><b>SAYPROOF</b><span>2026-10-30</span></div>
+        <p class="claim">“People remember <mark>10% of what they read and 90% of what they do</mark>.”</p>
+        <span class="stamp">Contradicted</span>
+        <dl>
+          <dt>Source says</dt>
+          <dd>“The learning pyramid … is a pseudoscientific group of effective learning models.” <a href="https://en.wikipedia.org/wiki/Learning_pyramid" target="_blank" rel="noopener noreferrer">Wikipedia</a></dd>
+          <dt>Say instead</dt>
+          <dd>“People retain information best through active engagement and practice …”</dd>
+        </dl>
+        <div class="slip-end"><span>1 claim checked</span><span>7.7 s</span></div>
+      </div>
+      <figcaption>A real result: the training-slide favourite, checked on 30 October 2026.</figcaption>
+    </figure>
+  </div>
+
+  <section class="tool" id="check" aria-labelledby="check-title">
+    <div class="wrap">
+      <div class="intro">
+        <h2 id="check-title">Check your talk</h2>
+        <p>Record a rehearsal, upload one, or paste the text. The example below is ready to run.</p>
+      </div>
+
+      <section class="speech" id="speech" aria-label="Speech input">
+        <p id="speech-on" hidden><b>Rehearse out loud.</b> Press Record and give your talk as you would on stage, then press Stop. Or upload a recording (audio or video, up to 30 minutes). <span id="asr-where">NVIDIA Parakeet writes it down on this computer</span>, then the facts are checked.</p>
+        <p id="speech-off"><b>Have a recording?</b> Recording works in the <a href="https://github.com/kaiser-data/sayproof#run-it" target="_blank" rel="noopener noreferrer">local version</a>. Here, paste a transcript instead: Zoom, Teams and YouTube can export one, and your phone's dictation can write one while you rehearse.</p>
+        <p id="speech-phone" hidden><b>On your phone.</b> Record your talk with the phone's voice recorder app, then press Upload a recording and pick the file.</p>
+        <div class="speech-actions" id="speech-actions" hidden>
+          <button type="button" class="rec" id="rec">● Record rehearsal</button>
+          <label class="file-label" for="file">Upload a recording<input type="file" id="file" accept="audio/*,video/*"></label>
+        </div>
+        <div class="phone" id="phone" hidden>
+          <span id="phone-qr" aria-hidden="true"></span>
+          <p><b>Recorded it on your phone?</b> Scan this code with the phone's camera to upload from there. Phone and computer need to be on the same Wi-Fi. <code id="phone-url"></code></p>
+        </div>
+      </section>
+
+      <figure class="take" id="take" hidden>
+        <figcaption>Your recording. Press a ▶ time in the results to hear that moment.</figcaption>
+        <audio id="player" controls></audio>
+      </figure>
+
+      <form class="form" id="form">
+        <label class="field" for="text">Your talk</label>
+        <textarea id="text" name="text" maxlength="30000">Pluto is our ninth planet. You can see the Great Wall of China from space with the naked eye. Octopuses have three hearts. And our users tripled this year.</textarea>
+        <div class="controls">
+          <button type="submit" id="go" title="Ctrl+Enter or ⌘+Enter">Check my talk</button>
+          <button type="button" class="ghost" id="clear">Clear</button>
+          <span class="status" id="status" role="status" aria-live="polite">The text above is an example rehearsal. Replace it with your own.</span>
+        </div>
+      </form>
+
+      <section id="out" aria-label="Checked claims"></section>
+    </div>
+  </section>
+
+  <div class="wrap explain">
+    <section id="how" aria-labelledby="how-title">
+      <h2 id="how-title">How it works</h2>
+      <ol class="how">
+        <li><p><b>Your words become text.</b> A recording is transcribed first. Every claim keeps its time in the recording, so you can jump to the moment you said it.</p></li>
+        <li><p><b>Each claim is looked up.</b> Reference sources first: public bodies, science organisations, encyclopedias, major news outlets. The open web only if they don't settle it, and the result says so.</p></li>
+        <li><p><b>You get a verdict and a fix.</b> A wrong claim comes with a sourced line to say instead. Claims about your own company are never searched; Sayproof asks for your data.</p></li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="verdicts-title">
+      <h2 id="verdicts-title">What the verdicts mean</h2>
+      <dl class="verdicts">
+        <dt><span class="pill supported">Supported</span></dt><dd>The sources confirm it.</dd>
+        <dt><span class="pill contradicted">Contradicted</span></dt><dd>The sources show it's false. You get a sourced line to say instead.</dd>
+        <dt><span class="pill outdated">Outdated</span></dt><dd>True once, not today, like “Pluto is our ninth planet”. A claim that names its year is judged for that year.</dd>
+        <dt><span class="pill misleading">Misleading</span></dt><dd>The facts are right, but the picture your audience takes away is wrong, like “the edge of the universe” for the observable universe.</dd>
+        <dt><span class="pill unverified">Can't verify</span></dt><dd>The sources don't settle it, or it's your own data. Sayproof asks for your source instead of guessing.</dd>
+      </dl>
+      <p class="rule"><b>No source, no verdict.</b> Every verdict except “can't verify” quotes a sentence that appears word for word in the source. If it doesn't, the verdict drops to “can't verify”.</p>
+    </section>
+  </div>
+
+  <div class="fine">
+    <div class="wrap">
+      <section aria-labelledby="ai-title">
+        <h3 id="ai-title">Written by AI, checked against sources</h3>
+        <p>Claims and verdicts come from an AI model, NVIDIA Nemotron on Nebius Token Factory, working from Tavily search results. It can be wrong. Open the quoted source before you change your talk.</p>
+      </section>
+      <section aria-labelledby="rec-title">
+        <h3 id="rec-title">What happens to your recording</h3>
+        <p>Online, your recording is stored in a private storage bucket and transcribed by ElevenLabs; the transcript is saved with it. Neither is public. Don't upload anything confidential. To keep everything on your own computer, run the <a href="https://github.com/kaiser-data/sayproof#run-it" target="_blank" rel="noopener noreferrer">local version</a>, where NVIDIA Parakeet transcribes on your machine.</p>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Sayproof · open source on <a href="https://github.com/kaiser-data/sayproof" target="_blank" rel="noopener noreferrer">GitHub</a></span>
+    <span><a href="https://sayproof-deck.netlify.app" target="_blank" rel="noopener noreferrer">The pitch deck</a></span>
+  </div>
+</footer>
+
+<!--APP-SCRIPT-->
+</body>
+</html>

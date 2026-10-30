@@ -3,6 +3,7 @@
 import asyncio
 import datetime as dt
 import json
+import re
 
 from sayproof.pipeline import (Source, apply_guard, check_transcript, find_position, parse_json_object, quote_in,
                                stream_transcript)
@@ -41,6 +42,8 @@ def test_guard_downgrades_missing_source_and_unknown_verdict():
 
 class FakeModel:
     async def complete(self, system, user, think=True):
+        if "stage line" in system:
+            return json.dumps({"line": "The IAU says Pluto was our ninth planet until 2006."})
         if "extract" in system:
             return json.dumps({"claims": [
                 {"claim": "Our users tripled this year.", "quote": "our users tripled", "search_query": "users tripled"},
@@ -62,8 +65,8 @@ def test_check_transcript_orders_by_position_and_guards():
     text = "Pluto is our ninth planet. And our users tripled."
     r = asyncio.run(check_transcript(FakeModel(), FakeSearch(), text, today=dt.date(2026, 9, 29)))
     assert [c["verdict"] for c in r["claims"]] == ["outdated", "unverified"]
-    assert r["claims"][0]["suggestion"].startswith("Pluto was")
-    assert r["counts"] == {"supported": 0, "contradicted": 0, "outdated": 1, "unverified": 1}
+    assert r["claims"][0]["suggestion"] == "The IAU says Pluto was our ninth planet until 2006."
+    assert r["counts"] == {"supported": 0, "contradicted": 0, "outdated": 1, "misleading": 0, "unverified": 1}
 
 
 def test_stream_sends_claims_first_then_each_verdict_then_counts():
@@ -84,6 +87,9 @@ class ParaphrasingModel:
         self.verdict_calls = 0
 
     async def complete(self, system, user, think=True):
+        if "stage line" in system:
+            assert "German" in system
+            return json.dumps({"line": "Pluto war bis 2006 unser neunter Planet, sagt die IAU."})
         if "extract" in system:
             return json.dumps({"language": "German", "claims": [
                 {"claim": "Pluto ist der neunte Planet.", "quote": "Pluto ist unser neunter Planet", "search_query": "Pluto"}]})
@@ -100,6 +106,7 @@ def test_retry_recovers_exact_quote_and_passes_language():
     r = asyncio.run(check_transcript(model, FakeSearch(), "Pluto ist unser neunter Planet.", today=dt.date(2026, 9, 29)))
     assert model.verdict_calls == 2
     assert r["claims"][0]["verdict"] == "outdated" and r["claims"][0]["guard_note"] is None
+    assert r["claims"][0]["suggestion"] == "Pluto war bis 2006 unser neunter Planet, sagt die IAU."
 
 
 class TieredSearch:
@@ -161,3 +168,46 @@ def test_find_position_ignores_punctuation_and_case():
     assert find_position("since our launch our users tripled", transcript) == transcript.index("since")
     assert find_position("Bats are blind", transcript) is None
     assert find_position("", transcript) is None
+
+
+class FailingStageLineModel(FakeModel):
+    async def complete(self, system, user, think=True):
+        if "stage line" in system:
+            raise RuntimeError("model down")
+        return await super().complete(system, user, think)
+
+
+def test_stage_line_failure_keeps_the_draft():
+    r = asyncio.run(check_transcript(FailingStageLineModel(), FakeSearch(), "Pluto is our ninth planet.",
+                                     today=dt.date(2026, 9, 29)))
+    assert r["claims"][0]["suggestion"] == "Pluto was our ninth planet until 2006."
+
+
+def test_long_talk_is_split_at_sentence_ends():
+    from sayproof.pipeline import chunks
+    talk = " ".join(f"Sentence number {i} is here." for i in range(400))
+    parts = chunks(talk, size=1000)
+    assert len(parts) > 5 and all(len(p) <= 1000 for p in parts)
+    assert " ".join(parts) == talk and all(p.endswith(".") for p in parts)
+
+
+class ChunkModel:
+    """Finds one claim per chunk, and the same claim again in every chunk."""
+
+    async def complete(self, system, user, think=True):
+        if "extract" in system:
+            first = re.search(r"Sentence number (\d+)", user).group(1)
+            return json.dumps({"language": "English", "claims": [
+                {"claim": f"Chunk starting at sentence {first}.", "quote": "Sentence number", "search_query": "x"},
+                {"claim": "Light takes 8 minutes from the Sun.", "quote": "Sentence number", "search_query": "x"}]})
+        return json.dumps({"verdict": "unverified"})
+
+
+def test_extraction_covers_every_chunk_and_checks_repeats_once(monkeypatch):
+    from sayproof import pipeline
+    monkeypatch.setattr(pipeline, "MAX_CLAIMS", 4)
+    talk = " ".join(f"Sentence number {i} is here." for i in range(2000))
+    claims, more = asyncio.run(pipeline.extract_claims(ChunkModel(), talk))
+    n_chunks = len(pipeline.chunks(talk))
+    assert sum(c["claim"].startswith("Light") for c in claims) == 1
+    assert len(claims) == 4 and more == n_chunks + 1 - 4

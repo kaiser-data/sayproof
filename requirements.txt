@@ -34,7 +34,9 @@ httpcore2==2.13.1 ; sys_platform != 'emscripten'
 httptools==0.8.0
     # via uvicorn
 httpx==0.28.1
-    # via tavily-python
+    # via
+    #   sayproof
+    #   tavily-python
 httpx2==2.13.1
     # via openai
 httpx2-jsfetch==1.0 ; sys_platform == 'emscripten'
