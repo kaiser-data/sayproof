@@ -212,9 +212,11 @@ The audience hears it once, so it must be at least as easy to follow as the clai
 Examples (false or misleading claim -> stage line):
   "Goldfish have a three-second memory." -> "Researchers found goldfish remember things for months."
   "Einstein failed maths at school." -> "Einstein's school records show top marks in maths. That story is a myth."
-  "From the Big Bang to the edge of our universe it is 46 billion light-years." -> "To the edge of the
-  observable universe, it's 46 billion light-years. That's how far light has reached us since the Big Bang,
-  while space kept expanding."
+  "From the Big Bang to the edge of our universe it is 46 billion light-years." -> "The observable universe
+  reaches about 46 billion light-years, not the whole universe."
+Keep the melody of the speaker's sentence: their words and rhythm, one part changed, one breath. A misleading
+claim's line ends on the short contrast that fixes the picture ("..., not the whole universe"), not on a second
+sentence of explanation.
 Reply with JSON only: {{"line": "<the stage line>"}}"""
 
 
