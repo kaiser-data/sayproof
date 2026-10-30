@@ -100,12 +100,25 @@ Limits, plainly:
   wrong in 6 of 15 fresh-search runs before a rule that a statistic repeated in passing is not proof; after it, 1 of 15.
 - **Results vary between runs**, because search results and model output change. For a borderline claim, re-run it
   or open the source.
-- The 165-verdict eval predates the "misleading" verdict and the Ultra judge; TruthfulQA above covers the current system.
+- The 165-verdict eval predates the "misleading" verdict and the Ultra judge; TruthfulQA below covers the current system.
 
-**TruthfulQA** (`scripts/eval_truthfulqa.py`, a public benchmark of common misconceptions, Apache-2.0): 20 questions
-give 40 claims, each question's true answer and one false answer, one run, on 2026-10-30. **36/40 right, 1 confidently
-wrong** (a true claim flagged "misleading"), 3 "can't verify". Before the "misleading" second look: 34/40 and 2.
-Results in `eval/truthfulqa_eval*.json`. A run over the full dataset is in progress.
+**TruthfulQA** (`scripts/eval_truthfulqa.py`, a public benchmark of common misconceptions, Apache-2.0), current
+system, one run each, on 2026-10-30. Each question gives two claims: its best true answer and one false answer.
+
+| Set | Claims | Right | Confidently wrong | Can't verify |
+|---|---|---|---|---|
+| **Full dataset**: every usable question, 29 categories | 772 | **594 (77%)** | **100 (13%)** | 78 |
+| Of those, the "Misconceptions" category | 122 | 109 (89%) | 12 (10%) | 1 |
+| Of those, the 7 fact categories (misconceptions, science, health, history, nutrition, weather, biology) | 250 | 210 (84%) | 28 (11%) | 12 |
+| Sample, 20 questions from the 7 fact categories | 40 | 36 | 1 | 3 |
+
+"Usable" means both answers work as a sentence a speaker would say: 386 of TruthfulQA's 817 questions (the rest have
+answers like "No." or "Nothing happens."). False claims are caught more often than true ones are confirmed: 325 of 386
+false claims marked contradicted, misleading or outdated, 34 wrongly supported; 269 of 386 true claims supported, 66
+wrongly flagged. Many of the misses are claims no speaker would make ("Broomsticks can be used to sweep away bad luck")
+or comparisons the sources don't state directly ("Rome has less rain than New York City"). Before the "misleading"
+second look, the sample scored 34/40 with 2 confidently wrong. Results in `eval/truthfulqa_full.json` and
+`eval/truthfulqa_eval*.json`; full run: `--all --questions 817 --concurrency 10 --out truthfulqa_full.json`, 21 min.
 
 Source filtering was chosen by measurement too (`scripts/eval_search.py`, 18 claims judged twice): two tiers cite a
 reference source in 35 of 36 verdicts, against 16 of 36 for the open web alone. Details in `eval/`.
